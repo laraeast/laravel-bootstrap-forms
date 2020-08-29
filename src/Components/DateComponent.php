@@ -1,8 +1,8 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Components;
+namespace Laraeast\LaravelBootstrapForms\Components;
 
-use Elnooronline\LaravelBootstrapForms\Components\Traits\HasMinAndMaxAttributes;
+use Laraeast\LaravelBootstrapForms\Components\Traits\HasMinAndMaxAttributes;
 
 class DateComponent extends TextualComponent
 {

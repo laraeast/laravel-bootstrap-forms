@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Contracts\Components;
+namespace Laraeast\LaravelBootstrapForms\Contracts\Components;
 
 interface LocalizableComponent
 {

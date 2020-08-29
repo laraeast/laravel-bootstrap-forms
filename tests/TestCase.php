@@ -1,15 +1,15 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Tests;
+namespace Laraeast\LaravelBootstrapForms\Tests;
 
 use Collective\Html\FormFacade;
-use Elnooronline\LaravelBootstrapForms\Facades\BsForm;
+use Laraeast\LaravelBootstrapForms\Facades\BsForm;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ViewErrorBag;
 use Collective\Html\HtmlServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Elnooronline\LaravelLocales\Providers\LocalesServiceProvider;
-use Elnooronline\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider;
+use Laraeast\LaravelLocales\Providers\LocalesServiceProvider;
+use Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {

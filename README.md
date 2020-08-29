@@ -1,9 +1,9 @@
 # # Laravel Bootstrap Forms.
 <p align="center">
-<a href="https://travis-ci.org/elnooronline/laravel-bootstrap-forms"><img src="https://travis-ci.org/elnooronline/laravel-bootstrap-forms.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/elnooronline/laravel-bootstrap-forms"><img src="https://poser.pugx.org/elnooronline/laravel-bootstrap-forms/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/elnooronline/laravel-bootstrap-forms"><img src="https://poser.pugx.org/elnooronline/laravel-bootstrap-forms/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/elnooronline/laravel-bootstrap-forms"><img src="https://poser.pugx.org/elnooronline/laravel-bootstrap-forms/license.svg" alt="License"></a>
+<a href="https://travis-ci.org/laraeast/laravel-bootstrap-forms"><img src="https://travis-ci.org/laraeast/laravel-bootstrap-forms.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laraeast/laravel-bootstrap-forms"><img src="https://poser.pugx.org/laraeast/laravel-bootstrap-forms/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laraeast/laravel-bootstrap-forms"><img src="https://poser.pugx.org/laraeast/laravel-bootstrap-forms/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laraeast/laravel-bootstrap-forms"><img src="https://poser.pugx.org/laraeast/laravel-bootstrap-forms/license.svg" alt="License"></a>
 </p>
 
 - [Installation](#installation)
@@ -23,9 +23,9 @@
 
 <a name="installation"></a>
 # # Installation
-> Begin by installing this package through Composer. Edit your project's `composer.json` file to require `elnooronline/laravel-bootstrap-forms`.
+> Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laraeast/laravel-bootstrap-forms`.
 ```bash
-composer require elnooronline/laravel-bootstrap-forms
+composer require laraeast/laravel-bootstrap-forms
 ```
 > You should publish the flags icons in public path to display in multilingual form tabs.
 
@@ -401,7 +401,7 @@ php artisan view:clear
 > run the `vendor:publish` artusan command to override components views as well.
 
 ```bash
-php artisan vendor:publish --provider="Elnooronline\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider" --tag BsForm
+php artisan vendor:publish --provider="Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider" --tag BsForm
 ```
 
 > will override components in `resources/views/vendor/BsForm` path.
@@ -471,7 +471,7 @@ php artisan vendor:publish --provider="Elnooronline\LaravelBootstrapForms\Provid
 
 namespace App\Components;
 
-use Elnooronline\LaravelBootstrapForms\Components\BaseComponent;
+use Laraeast\LaravelBootstrapForms\Components\BaseComponent;
 
 class ImageComponent extends BaseComponent
 {
@@ -547,7 +547,7 @@ namespace App\Providers;
 
 use App\Components\ImageComponent;
 use Illuminate\Support\ServiceProvider;
-use Elnooronline\LaravelBootstrapForms\Facades\BsForm;
+use Laraeast\LaravelBootstrapForms\Facades\BsForm;
 
 class AppServiceProvider extends ServiceProvider
 {

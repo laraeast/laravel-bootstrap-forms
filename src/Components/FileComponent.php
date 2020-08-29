@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Components;
+namespace Laraeast\LaravelBootstrapForms\Components;
 
 class FileComponent extends BaseComponent
 {

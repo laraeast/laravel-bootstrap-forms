@@ -1,10 +1,10 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Tests\Unit;
+namespace Laraeast\LaravelBootstrapForms\Tests\Unit;
 
 use Illuminate\Support\Str;
-use Elnooronline\LaravelBootstrapForms\Facades\BsForm;
-use Elnooronline\LaravelBootstrapForms\Tests\TestCase;
+use Laraeast\LaravelBootstrapForms\Facades\BsForm;
+use Laraeast\LaravelBootstrapForms\Tests\TestCase;
 
 class TextComponentTest extends TestCase
 {

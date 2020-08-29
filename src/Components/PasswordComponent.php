@@ -1,8 +1,8 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Components;
+namespace Laraeast\LaravelBootstrapForms\Components;
 
-use Elnooronline\LaravelBootstrapForms\Components\Traits\HasMinLengthAndMaxLengthAttributes;
+use Laraeast\LaravelBootstrapForms\Components\Traits\HasMinLengthAndMaxLengthAttributes;
 
 class PasswordComponent extends TextualComponent
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Traits;
+namespace Laraeast\LaravelBootstrapForms\Traits;
 
 use Form;
 

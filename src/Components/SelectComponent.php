@@ -1,8 +1,8 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Components;
+namespace Laraeast\LaravelBootstrapForms\Components;
 
-use Elnooronline\LaravelBootstrapForms\Components\Traits\HasPlaceholder;
+use Laraeast\LaravelBootstrapForms\Components\Traits\HasPlaceholder;
 
 class SelectComponent extends BaseComponent
 {

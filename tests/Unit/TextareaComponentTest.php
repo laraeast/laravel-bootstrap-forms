@@ -1,9 +1,9 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Tests\Unit;
+namespace Laraeast\LaravelBootstrapForms\Tests\Unit;
 
-use Elnooronline\LaravelBootstrapForms\Facades\BsForm;
-use Elnooronline\LaravelBootstrapForms\Tests\TestCase;
+use Laraeast\LaravelBootstrapForms\Facades\BsForm;
+use Laraeast\LaravelBootstrapForms\Tests\TestCase;
 
 class TextareaComponentTest extends TestCase
 {
