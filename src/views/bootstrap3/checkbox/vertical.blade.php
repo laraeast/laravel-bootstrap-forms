@@ -2,6 +2,9 @@
     <div class="col-sm-offset-2 col-sm-10">
         <div class="checkbox">
             <label>
+                @if($hasDefaultValue)
+                    {{ Form::hidden($name, $defaultValue) }}
+                @endif
                 {{ Form::checkbox($name, $value, $checked) }} {{ $label }}
             </label>
         </div>

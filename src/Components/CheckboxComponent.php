@@ -2,6 +2,8 @@
 
 namespace Laraeast\LaravelBootstrapForms\Components;
 
+use Illuminate\Support\Facades\Config;
+
 class CheckboxComponent extends BaseComponent
 {
     /**
@@ -15,6 +17,28 @@ class CheckboxComponent extends BaseComponent
      * @var bool
      */
     protected $checked = false;
+
+    /**
+     * @var bool
+     */
+    protected $hasDefaultValue = true;
+
+    /**
+     * @var mixed
+     */
+    protected $defaultValue;
+
+    /**
+     * Set resource name property.
+     *
+     * @param $resource
+     */
+    public function __construct($resource)
+    {
+        parent::__construct($resource);
+
+        $this->hasDefaultValue = Config::get('laravel-bootstrap-forms.checkboxes.hasDefaultValue', true);
+    }
 
     /**
      * Initialized the input arguments.
@@ -32,11 +56,11 @@ class CheckboxComponent extends BaseComponent
 
         $this->checked = $checked;
 
-        $this->setDefaultLabel($name);
+        $this->setDefaultLabel();
 
-        $this->setDefaultNote($name);
+        $this->setDefaultNote();
 
-        $this->setDefaultPlaceholder($name);
+        $this->setDefaultPlaceholder();
 
         return $this;
     }
@@ -53,6 +77,39 @@ class CheckboxComponent extends BaseComponent
     }
 
     /**
+     * @param mixed $value
+     * @return $this
+     */
+    public function default($value = 0)
+    {
+        $this->hasDefaultValue = true;
+
+        $this->defaultValue = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function withoutDefault()
+    {
+        $this->hasDefaultValue = false;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function withDefault()
+    {
+        $this->hasDefaultValue = true;
+
+        return $this;
+    }
+
+    /**
      * The variables with registered in view component.
      *
      * @return array
@@ -60,7 +117,9 @@ class CheckboxComponent extends BaseComponent
     protected function viewComposer()
     {
         return [
-            'checked' => $this->checked
+            'checked' => $this->checked,
+            'hasDefaultValue' => $this->hasDefaultValue,
+            'defaultValue' => $this->defaultValue,
         ];
     }
 }

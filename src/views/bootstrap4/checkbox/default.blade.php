@@ -4,7 +4,9 @@
 
 <div class="form-group">
     <div class="form-check">
-        {{ Form::hidden($name, 0) }}
+        @if($hasDefaultValue)
+            {{ Form::hidden($name, $defaultValue) }}
+        @endif
         {{ Form::checkbox($name, $value, $checked, ['class' => 'form-check-input', 'id' => $id]) }}
         <label class="form-check-label" for="{{ $id }}">
             {{ $label }}
