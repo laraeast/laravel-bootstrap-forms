@@ -92,7 +92,7 @@ class CheckboxComponent extends BaseComponent
     /**
      * @return $this
      */
-    protected function withoutDefault()
+    public function withoutDefault()
     {
         $this->hasDefaultValue = false;
 
@@ -102,7 +102,7 @@ class CheckboxComponent extends BaseComponent
     /**
      * @return $this
      */
-    protected function withDefault()
+    public function withDefault()
     {
         $this->hasDefaultValue = true;
 
