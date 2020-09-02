@@ -26,7 +26,7 @@ class CheckboxComponent extends BaseComponent
     /**
      * @var mixed
      */
-    protected $defaultValue;
+    protected $defaultValue = 0;
 
     /**
      * Set resource name property.
