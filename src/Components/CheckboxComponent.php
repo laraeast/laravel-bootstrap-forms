@@ -53,7 +53,7 @@ class CheckboxComponent extends BaseComponent
     }
 
     /**
-     * The variables with registerd in view component.
+     * The variables with registered in view component.
      *
      * @return array
      */
