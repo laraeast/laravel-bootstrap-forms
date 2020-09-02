@@ -1,24 +1,24 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms;
+namespace Laraeast\LaravelBootstrapForms;
 
-use Elnooronline\LaravelLocales\Facades\Locales;
+use Laraeast\LaravelLocales\Facades\Locales;
 use Illuminate\Support\Str;
 use Collective\Html\FormBuilder;
-use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
-use Elnooronline\LaravelBootstrapForms\Components\FileComponent;
-use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
-use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
-use Elnooronline\LaravelBootstrapForms\Components\DateComponent;
-use Elnooronline\LaravelBootstrapForms\Components\EmailComponent;
-use Elnooronline\LaravelBootstrapForms\Components\RadioComponent;
-use Elnooronline\LaravelBootstrapForms\Components\NumberComponent;
-use Elnooronline\LaravelBootstrapForms\Components\SelectComponent;
-use Elnooronline\LaravelBootstrapForms\Components\SubmitComponent;
-use Elnooronline\LaravelBootstrapForms\Components\PasswordComponent;
-use Elnooronline\LaravelBootstrapForms\Components\CheckboxComponent;
-use Elnooronline\LaravelBootstrapForms\Components\TextareaComponent;
-use Elnooronline\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
+use Laraeast\LaravelBootstrapForms\Traits\HasOpenAndClose;
+use Laraeast\LaravelBootstrapForms\Components\FileComponent;
+use Laraeast\LaravelBootstrapForms\Components\TextComponent;
+use Laraeast\LaravelBootstrapForms\Components\TimeComponent;
+use Laraeast\LaravelBootstrapForms\Components\DateComponent;
+use Laraeast\LaravelBootstrapForms\Components\EmailComponent;
+use Laraeast\LaravelBootstrapForms\Components\RadioComponent;
+use Laraeast\LaravelBootstrapForms\Components\NumberComponent;
+use Laraeast\LaravelBootstrapForms\Components\SelectComponent;
+use Laraeast\LaravelBootstrapForms\Components\SubmitComponent;
+use Laraeast\LaravelBootstrapForms\Components\PasswordComponent;
+use Laraeast\LaravelBootstrapForms\Components\CheckboxComponent;
+use Laraeast\LaravelBootstrapForms\Components\TextareaComponent;
+use Laraeast\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
 
 class BsForm
 {

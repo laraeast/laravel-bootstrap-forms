@@ -1,10 +1,10 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Providers;
+namespace Laraeast\LaravelBootstrapForms\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Elnooronline\LaravelBootstrapForms\BsForm;
-use Elnooronline\LaravelBootstrapForms\Helpers\FormDirectives;
+use Laraeast\LaravelBootstrapForms\BsForm;
+use Laraeast\LaravelBootstrapForms\Helpers\FormDirectives;
 
 class BootstrapFormsServiceProvider extends ServiceProvider
 {

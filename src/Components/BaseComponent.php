@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Components;
+namespace Laraeast\LaravelBootstrapForms\Components;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Lang;

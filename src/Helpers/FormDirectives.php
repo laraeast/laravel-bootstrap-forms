@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Helpers;
+namespace Laraeast\LaravelBootstrapForms\Helpers;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Blade;

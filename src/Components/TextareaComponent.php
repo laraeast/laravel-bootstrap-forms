@@ -1,10 +1,10 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Components;
+namespace Laraeast\LaravelBootstrapForms\Components;
 
 
-use Elnooronline\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
-use Elnooronline\LaravelBootstrapForms\Traits\LocalizableComponent as LocalizableComponentTrait;
+use Laraeast\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
+use Laraeast\LaravelBootstrapForms\Traits\LocalizableComponent as LocalizableComponentTrait;
 
 class TextareaComponent extends TextualComponent implements LocalizableComponent
 {

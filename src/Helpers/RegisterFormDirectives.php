@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Helpers;
+namespace Laraeast\LaravelBootstrapForms\Helpers;
 
 use Illuminate\Support\Facades\Config;
 use Ramsey\Uuid\Uuid;

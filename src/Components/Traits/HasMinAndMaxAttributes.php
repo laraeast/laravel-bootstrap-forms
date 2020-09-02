@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelBootstrapForms\Components\Traits;
+namespace Laraeast\LaravelBootstrapForms\Components\Traits;
 
 trait HasMinAndMaxAttributes
 {
