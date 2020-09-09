@@ -117,7 +117,7 @@ abstract class BaseComponent implements Htmlable
      * @param null $value
      * @return $this
      */
-    abstract public function init();
+    abstract public function init($name = null, $value = null);
 
     /**
      * Set the default label for the input.

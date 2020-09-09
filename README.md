@@ -1,3 +1,5 @@
+**This package has been deprecated. But worry not. You can use [laraeast/laravel-bootstrap-forms](https://github.com/laraeast/laravel-bootstrap-forms)**
+
 # # Laravel Bootstrap Forms.
 <p align="center">
 <a href="https://travis-ci.org/laraeast/laravel-bootstrap-forms"><img src="https://travis-ci.org/laraeast/laravel-bootstrap-forms.svg" alt="Build Status"></a>
@@ -111,10 +113,14 @@ php artisan vendor:publish --tag=locales:flags
 ```blade
 {{ BsForm::checkbox('name', 'value')->checked(false) }}
 {{ BsForm::checkbox('name')->value('value')->checked(false) }}
+{{ BsForm::checkbox('name')->value(1)->withDefault()->checked(false) }} {{-- If unchecked will send "0" with request --}}
+{{ BsForm::checkbox('name')->value(1)->withoutDefault()->checked(false) }}
+{{ BsForm::checkbox('name')->value(1)->default('no')->checked(false) }} {{-- If unchecked will send "no" with request --}}
 
 {{ BsForm::radio('name', 'value')->checked(false)->label('label') }}
 {{ BsForm::radio('name')->value('value')->checked(false)->label('label') }}
 ```
+> By default, will send default value "0" with an unchecked checkbox, if you want to disable it globally set the configuration key "laravel-bootstrap-forms.checkboxes.hasDefaultValue": true
 
 <a name="dropdown"></a>
 # # Drop-Down Lists
@@ -352,18 +358,20 @@ return [
     | Contains an array with the applications available locales.
     |
     */
-    'en' => [
-        'code' => 'en',
-        'name' => 'English',
-        'dir' => 'ltr',
-        'flag' => '/images/flags/us.png'
-    ],
-    'ar' => [
-        'code' => 'ar',
-        'name' => 'العربية',
-        'dir' => 'rtl',
-        'flag' => '/images/flags/sa.png'
-    ],
+    'languages' => [
+        'en' => [
+                'code' => 'en',
+                'name' => 'English',
+                'dir' => 'ltr',
+                'flag' => '/images/flags/us.png'
+            ],
+            'ar' => [
+                'code' => 'ar',
+                'name' => 'العربية',
+                'dir' => 'rtl',
+                'flag' => '/images/flags/sa.png'
+            ],
+        ],
 ];
 ```
 
@@ -386,6 +394,7 @@ return [
      * - 'BsForm::bootstrap3'  - Bootstrap 3
      */
     'views' => 'BsForm::bootstrap3',
+    ...
 ];
 ```
 

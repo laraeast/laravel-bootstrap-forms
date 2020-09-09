@@ -1,6 +1,9 @@
 <div class="form-group{{ $errors->{$errorBag}->has($nameWithoutBrackets) ? ' has-error' : '' }}">
     <div class="checkbox">
         <label>
+            @if($hasDefaultValue)
+                {{ Form::hidden($name, $defaultValue) }}
+            @endif
             {{ Form::checkbox($name, $value, $checked) }} {{ $label }}
         </label>
     </div>
