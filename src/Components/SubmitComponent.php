@@ -21,15 +21,13 @@ class SubmitComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param null $label
-     * @param null $name
-     * @param null $value
+     * @param mixed ...$arguments
      * @return $this
      */
-    public function init($label = null, $name = null)
+    public function init(...$arguments)
     {
-        $this->name($name);
-        $this->label($label);
+        $this->name($arguments[1] ?? null);
+        $this->label($arguments[0] ?? null);
 
         return $this;
     }

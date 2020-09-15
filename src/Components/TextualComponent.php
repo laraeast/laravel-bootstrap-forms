@@ -11,15 +11,14 @@ abstract class TextualComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param null $name
-     * @param null $value
+     * @param mixed ...$arguments
      * @return $this
      */
-    public function init($name = null, $value = null)
+    public function init(...$arguments)
     {
-        $this->name($name);
+        $this->name($name = $arguments[0] ?? null);
 
-        $this->value($value ?: old($name));
+        $this->value($arguments[1] ?? null ?: old($name));
 
         $this->setDefaultLabel();
 

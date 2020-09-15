@@ -14,13 +14,12 @@ class FileComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param null $name
-     * @param null $value
+     * @param mixed ...$arguments
      * @return $this
      */
-    public function init($name = null)
+    public function init(...$arguments)
     {
-        $this->name($name);
+        $this->name($name = $arguments[0] ?? null);
 
         $this->setDefaultLabel($name);
 

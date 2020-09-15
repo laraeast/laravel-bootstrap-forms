@@ -43,18 +43,16 @@ class CheckboxComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param null $name
-     * @param null $value
-     * @param bool $checked
+     * @param mixed ...$arguments
      * @return $this
      */
-    public function init($name = null, $value = null, $checked = false)
+    public function init(...$arguments)
     {
-        $this->name($name);
+        $this->name($name = $arguments[0] ?? null);
 
-        $this->value($value ?: old($name));
+        $this->value($arguments[1] ?? null ?: old($name));
 
-        $this->checked = $checked;
+        $this->checked = $arguments[2] ?? false;
 
         $this->setDefaultLabel();
 

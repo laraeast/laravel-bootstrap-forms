@@ -23,17 +23,16 @@ class SelectComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param null $name
-     * @param null $value
+     * @param mixed ...$arguments
      * @return $this
      */
-    public function init($name = null, $options = [], $value = null)
+    public function init(...$arguments)
     {
-        $this->name($name);
+        $this->name($name = $arguments[0] ?? null);
 
-        $this->value($value ?: old($name) ?: request($name));
+        $this->value($arguments[2] ?? null ?: old($name) ?: request($name));
 
-        $this->options = $options;
+        $this->options = $arguments[1] ?? [];
 
         $this->setDefaultLabel($name);
 
