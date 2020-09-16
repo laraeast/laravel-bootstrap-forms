@@ -501,15 +501,14 @@ class ImageComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param null $name
-     * @param null $file
+     * @param mixed ...$arguments
      * @return $this
      */
-    public function init($name = null, $file = null)
+    public function init(...$arguments)
     {
-        $this->name = $name;
+        $this->name = $name = $arguments[0] ?? null;
 
-        $this->value = $file ?: 'http://via.placeholder.com/100x100';
+        $this->value = ($arguments[1] ?? null) ?: 'http://via.placeholder.com/100x100';
 
         //$this->hasDefaultLocaledLabel($name);
 
