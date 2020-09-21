@@ -510,11 +510,11 @@ class ImageComponent extends BaseComponent
 
         $this->value = ($arguments[1] ?? null) ?: 'http://via.placeholder.com/100x100';
 
-        //$this->hasDefaultLocaledLabel($name);
+        //$this->setDefaultLabel();
 
-        //$this->hasDefaultLocaledNote($name);
+        //$this->setDefaultNote();
 
-        //$this->hasDefaultLocaledPlaceholder($name);
+        //$this->setDefaultPlaceholder();
 
         return $this;
     }
