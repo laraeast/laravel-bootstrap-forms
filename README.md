@@ -1,5 +1,3 @@
-**This package has been deprecated. But worry not. You can use [laraeast/laravel-bootstrap-forms](https://github.com/laraeast/laravel-bootstrap-forms)**
-
 # # Laravel Bootstrap Forms.
 <p align="center">
 <a href="https://travis-ci.org/laraeast/laravel-bootstrap-forms"><img src="https://travis-ci.org/laraeast/laravel-bootstrap-forms.svg" alt="Build Status"></a>
