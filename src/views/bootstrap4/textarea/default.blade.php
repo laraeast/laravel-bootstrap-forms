@@ -14,9 +14,9 @@
                 {{ $errors->{$errorBag}->first($nameWithoutBrackets) }}
             </div>
         @else
-            <small class="form-text text-muted">{{ $note }}</small>
+            <small class="form-text text-muted">{!! $note !!}</small>
         @endif
     @else
-        <small class="form-text text-muted">{{ $note }}</small>
+        <small class="form-text text-muted">{!! $note !!}</small>
     @endif
 </div>

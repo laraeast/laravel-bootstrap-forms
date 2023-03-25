@@ -9,10 +9,10 @@
         @if($errors->{$errorBag}->has($nameWithoutBrackets))
             <strong class="help-block">{{ $errors->{$errorBag}->first($nameWithoutBrackets) }}</strong>
         @else
-            <strong class="help-block">{{ $note }}</strong>
+            <strong class="help-block">{!! $note !!}</strong>
         @endif
     @else
-        <strong class="help-block">{{ $note }}</strong>
+        <strong class="help-block">{!! $note !!}</strong>
     @endif
 
 </div>
