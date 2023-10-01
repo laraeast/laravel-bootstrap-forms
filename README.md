@@ -405,10 +405,10 @@ php artisan view:clear
 <a name="custom-style"></a>
 # # Add Custom Style To The Component
 
-> run the `vendor:publish` artusan command to override components views as well.
+> run the `vendor:publish` artisan command to override components views as well.
 
 ```bash
-php artisan vendor:publish --provider="Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider" --tag BsForm
+php artisan vendor:publish --provider="Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider" --tag laravel-bootstrap-forms.views
 ```
 
 > will override components in `resources/views/vendor/BsForm` path.
@@ -417,15 +417,15 @@ php artisan vendor:publish --provider="Laraeast\LaravelBootstrapForms\Providers\
 - views
 	- vendor
 		- BsForm
-		    - bootstrap4
-                - text
-                    - default.blade.php
-                    - vertical.blade.php
-                    - custom.blade.php
-                - email
-                    - default.blade.php
-                    - vertical.blade.php
-                    - custom.blade.php
+			- bootstrap4
+				- text
+					- default.blade.php
+					- vertical.blade.php
+					- custom.blade.php
+				- email
+					- default.blade.php
+					- vertical.blade.php
+					- custom.blade.php
 ```
 
 > you can copy `default.blade.php` file as `custom.blade.php` and use custom style as well :
