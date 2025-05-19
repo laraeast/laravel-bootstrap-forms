@@ -10,11 +10,8 @@ abstract class TextualComponent extends BaseComponent
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments): self
     {
         $this->name($name = $arguments[0] ?? null);
 

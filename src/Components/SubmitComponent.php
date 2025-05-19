@@ -6,38 +6,30 @@ class SubmitComponent extends BaseComponent
 {
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'submit';
+    protected string $viewPath = 'submit';
 
     /**
      * The button class name.
-     *
-     * @var string
      */
-    protected $className = 'btn-danger';
+    protected string $className = 'btn-danger';
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments):self
     {
-        $this->name($arguments[1] ?? null);
-        $this->label($arguments[0] ?? null);
+        $this->value($arguments[2] ?? '');
+        $this->name($arguments[1] ?? '');
+        $this->label($arguments[0] ?? '');
 
         return $this;
     }
 
     /**
      * Set primary style for the button.
-     *
-     * @return $this
      */
-    public function primary()
+    public function primary(): self
     {
         $this->className = 'btn-primary';
 
@@ -46,10 +38,8 @@ class SubmitComponent extends BaseComponent
 
     /**
      * Set danger style for the button.
-     *
-     * @return $this
      */
-    public function danger()
+    public function danger(): self
     {
         $this->className = 'btn-danger';
 
@@ -58,10 +48,8 @@ class SubmitComponent extends BaseComponent
 
     /**
      * Set info style for the button.
-     *
-     * @return $this
      */
-    public function info()
+    public function info(): self
     {
         $this->className = 'btn-info';
 
@@ -70,10 +58,8 @@ class SubmitComponent extends BaseComponent
 
     /**
      * Set success style for the button.
-     *
-     * @return $this
      */
-    public function success()
+    public function success(): self
     {
         $this->className = 'btn-success';
 
@@ -82,10 +68,8 @@ class SubmitComponent extends BaseComponent
 
     /**
      * Set warning style for the button.
-     *
-     * @return $this
      */
-    public function warning()
+    public function warning(): self
     {
         $this->className = 'btn-warning';
 
@@ -93,11 +77,9 @@ class SubmitComponent extends BaseComponent
     }
 
     /**
-     * The variables with registerd in view component.
-     *
-     * @return array
+     * The registered variables in view component.
      */
-    protected function viewComposer()
+    protected function viewComposer(): array
     {
         return [
             'className' => $this->className,

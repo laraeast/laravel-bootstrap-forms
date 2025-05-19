@@ -1,17 +1,22 @@
 <div class="form-group{{ $errors->{$errorBag}->has($nameWithoutBrackets) ? ' has-error' : '' }}">
     @if($label)
-        {{ Form::label($name, $label, ['class' => 'content-label']) }}
+        {{ html()->label($label, $name) }}
+    @endif
+    @php($input = html()->select($name, $options)->attributes(array_merge(['class' => 'form-control'], $attributes)))
+
+    @if($value)
+        @php($input = $input->value($value))
     @endif
 
-    {{ Form::select($name, $options, $value, array_merge(['class' => 'form-control'], $attributes)) }}
+    {{ $input }}
 
     @if($inlineValidation)
         @if($errors->{$errorBag}->has($nameWithoutBrackets))
-            <strong class="help-block">{{ $errors->{$errorBag}->first($nameWithoutBrackets) }}</strong>
+            <small class="form-text text-muted">{{ $errors->{$errorBag}->first($nameWithoutBrackets) }}</small>
         @else
-            <strong class="help-block">{!! $note !!}</strong>
+            <small class="form-text text-muted">{!! $note !!}</small>
         @endif
     @else
-        <strong class="help-block">{!! $note !!}</strong>
+        <small class="form-text text-muted">{!! $note !!}</small>
     @endif
 </div>

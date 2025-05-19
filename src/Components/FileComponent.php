@@ -6,10 +6,8 @@ class FileComponent extends BaseComponent
 {
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'file';
+    protected string $viewPath = 'file';
 
     /**
      * Initialized the input arguments.
@@ -17,7 +15,7 @@ class FileComponent extends BaseComponent
      * @param mixed ...$arguments
      * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments): self
     {
         $this->name($name = $arguments[0] ?? null);
 
@@ -28,11 +26,7 @@ class FileComponent extends BaseComponent
         return $this;
     }
 
-    /**
-     * @param bool $multiple
-     * @return $this
-     */
-    public function multiple($multiple = true)
+    public function multiple(bool $multiple = true): self
     {
         if ($multiple) {
             $this->attributes['multiple'] = 'multiple';

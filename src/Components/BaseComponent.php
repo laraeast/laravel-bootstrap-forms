@@ -10,120 +10,81 @@ use Illuminate\Contracts\Support\Htmlable;
 abstract class BaseComponent implements Htmlable
 {
     /**
-     * The form resource name.
-     *
-     * @var string
+     * The input's name attribute.
      */
-    protected $resource;
+    protected string $name = '';
 
     /**
-     * The input's name attribute.
-     *
-     * @var string
+     * The input's name attribute without brackets.
      */
-    protected $name;
+    protected string $nameWithoutBrackets ='';
 
     /**
-     * The input's name attribute.
-     *
-     * @var string
+     * Determine if the input's name attribute has brackets.
      */
-    protected $nameWithoutBrackets;
-
-    /**
-     * The input's name attribute.
-     *
-     * @var string
-     */
-    protected $nameHasBrackets = false;
+    protected bool $nameHasBrackets = false;
 
     /**
      * The input's value attribute.
-     *
-     * @var string
      */
-    protected $value;
+    protected mixed $value = '';
 
     /**
      * The input's label attribute.
-     *
-     * @var string
      */
-    protected $label;
+    protected string $label = '';
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath;
+    protected string $viewPath;
 
     /**
      * The input's help-block note.
-     *
-     * @var string
      */
-    protected $note;
+    protected string $note = '';
 
     /**
      * The input's attributes.
-     *
-     * @var array
      */
-    protected $attributes = [];
+    protected array $attributes = [];
 
     /**
      * The select's options array.
-     *
-     * @var array
      */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * The component style.
-     *
-     * @var string
      */
-    protected $style = 'default';
+    protected string $style = 'default';
 
     /**
      * Show inline validation errors.
-     *
-     * @var bool
      */
-    protected $inlineValidation = true;
+    protected bool $inlineValidation = true;
 
     /**
      * The key to be used for the view error bag.
-     *
-     * @var string
      */
-    protected $errorBag = 'default';
+    protected string $errorBag = 'default';
 
     /**
      * Set resource name property.
-     *
-     * @param $resource
      */
-    public function __construct($resource)
-    {
-        $this->resource = $resource;
-    }
+    public function __construct(
+        protected string $resource,
+    ) {}
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    abstract public function init(...$arguments);
+    abstract public function init(...$arguments): self;
 
     /**
      * Set the default label for the input.
-     *
-     * @return void
      */
-    protected function setDefaultLabel()
+    protected function setDefaultLabel(): void
     {
         $name = $this->nameWithoutBracketsAndLocaleForm();
 
@@ -134,10 +95,8 @@ abstract class BaseComponent implements Htmlable
 
     /**
      * Set the default localed note (help-block) for the input.
-     *
-     * @return void
      */
-    protected function setDefaultNote()
+    protected function setDefaultNote(): void
     {
         $name = $this->nameWithoutBracketsAndLocaleForm();
 
@@ -148,10 +107,8 @@ abstract class BaseComponent implements Htmlable
 
     /**
      * Set the default localed placeholder for the input.
-     *
-     * @return void
      */
-    protected function setDefaultPlaceholder()
+    protected function setDefaultPlaceholder(): void
     {
         $name = $this->nameWithoutBracketsAndLocaleForm();
 
@@ -160,11 +117,7 @@ abstract class BaseComponent implements Htmlable
         }
     }
 
-    /**
-     * @param $name
-     * @return $this
-     */
-    public function name($name)
+    public function name(string $name): self
     {
         $this->name = $name;
         $this->nameWithoutBrackets = str_replace('[]', '', $name);
@@ -176,52 +129,34 @@ abstract class BaseComponent implements Htmlable
 
     /**
      * The key to be used for the view error bag.
-     *
-     * @param string $bag
-     * @return $this
      */
-    public function errorBag($bag = 'default')
+    public function errorBag(string $bag = 'default'): self
     {
         $this->errorBag = $bag;
 
         return $this;
     }
 
-    /**
-     * @param $label
-     * @return $this
-     */
-    public function label($label = null)
+    public function label(?string $label = null): self
     {
         $this->label = $label;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    protected function nameWithoutBracketsAndLocaleForm()
+    protected function nameWithoutBracketsAndLocaleForm(): string
     {
         return preg_replace('/([a-zA-Z0-9]+)(:.*)?(\[(?:.*)\])?/', "$1", $this->name);
     }
 
-    /**
-     * @param $value
-     * @return $this
-     */
-    public function value($value)
+    public function value(mixed $value): self
     {
         $this->value = $value;
 
         return $this;
     }
 
-    /**
-     * @param $required
-     * @return $this
-     */
-    public function required($required = true)
+    public function required(bool $required = true): self
     {
         if ($required) {
             $this->attributes['required'] = 'required';
@@ -230,11 +165,7 @@ abstract class BaseComponent implements Htmlable
         return $this;
     }
 
-    /**
-     * @param $autofocus
-     * @return $this
-     */
-    public function autofocus($autofocus = true)
+    public function autofocus(bool $autofocus = true): self
     {
         if ($autofocus) {
             $this->attributes['autofocus'] = 'autofocus';
@@ -245,12 +176,8 @@ abstract class BaseComponent implements Htmlable
 
     /**
      * Add custom attribute.
-     *
-     * @param string|array $key
-     * @param null $value
-     * @return $this
      */
-    public function attribute($key, $value = null)
+    public function attribute(string|array $key, mixed $value = null): self
     {
         if (is_array($key)) {
             $this->attributes = array_merge($this->attributes, $key);
@@ -261,18 +188,14 @@ abstract class BaseComponent implements Htmlable
         return $this;
     }
 
-    /**
-     * @param $note
-     * @return $this
-     */
-    public function note($note)
+    public function note(string $note): self
     {
         $this->note = $note;
 
         return $this;
     }
 
-    protected function getViewPath()
+    protected function getViewPath(): string
     {
         if (Str::contains($this->viewPath, '::')) {
             $alias = explode('::', $this->viewPath)[0];
@@ -288,11 +211,8 @@ abstract class BaseComponent implements Htmlable
 
     /**
      * Set the component style.
-     *
-     * @param $style
-     * @return $this
      */
-    public function style($style)
+    public function style(string $style): self
     {
         $this->style = $style;
 
@@ -301,11 +221,8 @@ abstract class BaseComponent implements Htmlable
 
     /**
      * Set the input inline validation errors option.
-     *
-     * @param bool $bool
-     * @return $this
      */
-    public function inlineValidation($bool = true)
+    public function inlineValidation(bool $bool = true): self
     {
         $this->inlineValidation = $bool;
 
@@ -317,7 +234,7 @@ abstract class BaseComponent implements Htmlable
      *
      * @return string
      */
-    protected function render()
+    protected function render(): string
     {
         $properties = array_merge([
             'label' => $this->label,
@@ -336,32 +253,25 @@ abstract class BaseComponent implements Htmlable
     }
 
     /**
-     * The variables with registerd in view component.
-     *
-     * @return array
+     * The registered variables in view component.
      */
-    protected function viewComposer()
+    protected function viewComposer(): array
     {
         return [];
     }
 
     /**
      * Transform the properties to be used in view.
-     *
-     * @param array $properties
-     * @return array
      */
-    protected function transformProperties(array $properties)
+    protected function transformProperties(array $properties): array
     {
         return $properties;
     }
 
     /**
      * Get component as a string of HTML.
-     *
-     * @return string
      */
-    public function toHtml()
+    public function toHtml(): string
     {
         return $this->render();
     }

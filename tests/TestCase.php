@@ -2,11 +2,10 @@
 
 namespace Laraeast\LaravelBootstrapForms\Tests;
 
-use Collective\Html\FormFacade;
+use Illuminate\Support\Facades\Config;
 use Laraeast\LaravelBootstrapForms\Facades\BsForm;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ViewErrorBag;
-use Collective\Html\HtmlServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Laraeast\LaravelLocales\Providers\LocalesServiceProvider;
 use Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider;
@@ -47,6 +46,8 @@ class TestCase extends OrchestraTestCase
         $this->app->setLocale('en');
 
         $this->blade = resolve('blade.compiler');
+
+        $this->app['config']->set(['laravel-bootstrap-forms.views' => 'BsForm::bootstrap3']);
     }
 
     /**
@@ -58,7 +59,6 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            HtmlServiceProvider::class,
             BootstrapFormsServiceProvider::class,
             LocalesServiceProvider::class,
         ];
@@ -74,7 +74,6 @@ class TestCase extends OrchestraTestCase
     protected function getPackageAliases($app)
     {
         return [
-            'Form' => FormFacade::class,
             'BsForm' => BsForm::class,
         ];
     }
@@ -86,7 +85,7 @@ class TestCase extends OrchestraTestCase
      *
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('session.driver', 'array');
     }
@@ -97,15 +96,19 @@ class TestCase extends OrchestraTestCase
      * @param $input
      * @return string|string[]|null
      */
-    protected  function minifyHtml($input) {
-        if(trim($input) === "") return $input;
+    protected function minifyHtml($input): string|array|null
+    {
+        if (trim($input) === "") {
+            return $input;
+        }
         // Remove extra white-space(s) between HTML attribute(s)
-        $input = preg_replace_callback('#<([^\/\s<>!]+)(?:\s+([^<>]*?)\s*|\s*)(\/?)>#s', function($matches) {
-            return '<' . $matches[1] . preg_replace('#([^\s=]+)(\=([\'"]?)(.*?)\3)?(\s+|$)#s', ' $1$2', $matches[2]) . $matches[3] . '>';
+        $input = preg_replace_callback('#<([^\/\s<>!]+)(?:\s+([^<>]*?)\s*|\s*)(\/?)>#s', function ($matches) {
+            return '<'.$matches[1].preg_replace('#([^\s=]+)(\=([\'"]?)(.*?)\3)?(\s+|$)#s', ' $1$2',
+                    $matches[2]).$matches[3].'>';
         }, str_replace("\r", "", $input));
 
         return preg_replace(
-            array(
+            [
                 // t = text
                 // o = tag open
                 // c = tag close
@@ -113,17 +116,24 @@ class TestCase extends OrchestraTestCase
                 '#<(img|input)(>| .*?>)#s',
                 // Remove a line break and two or more white-space(s) between tag(s)
                 '#(<!--.*?-->)|(>)(?:\n*|\s{2,})(<)|^\s*|\s*$#s',
-                '#(<!--.*?-->)|(?<!\>)\s+(<\/.*?>)|(<[^\/]*?>)\s+(?!\<)#s', // t+c || o+t
-                '#(<!--.*?-->)|(<[^\/]*?>)\s+(<[^\/]*?>)|(<\/.*?>)\s+(<\/.*?>)#s', // o+o || c+c
-                '#(<!--.*?-->)|(<\/.*?>)\s+(\s)(?!\<)|(?<!\>)\s+(\s)(<[^\/]*?\/?>)|(<[^\/]*?\/?>)\s+(\s)(?!\<)#s', // c+t || t+o || o+t -- separated by long white-space(s)
-                '#(<!--.*?-->)|(<[^\/]*?>)\s+(<\/.*?>)#s', // empty tag
-                '#<(img|input)(>| .*?>)<\/\1>#s', // reset previous fix
-                '#(&nbsp;)&nbsp;(?![<\s])#', // clean up ...
-                '#(?<=\>)(&nbsp;)(?=\<)#', // --ibid
+                '#(<!--.*?-->)|(?<!\>)\s+(<\/.*?>)|(<[^\/]*?>)\s+(?!\<)#s',
+                // t+c || o+t
+                '#(<!--.*?-->)|(<[^\/]*?>)\s+(<[^\/]*?>)|(<\/.*?>)\s+(<\/.*?>)#s',
+                // o+o || c+c
+                '#(<!--.*?-->)|(<\/.*?>)\s+(\s)(?!\<)|(?<!\>)\s+(\s)(<[^\/]*?\/?>)|(<[^\/]*?\/?>)\s+(\s)(?!\<)#s',
+                // c+t || t+o || o+t -- separated by long white-space(s)
+                '#(<!--.*?-->)|(<[^\/]*?>)\s+(<\/.*?>)#s',
+                // empty tag
+                '#<(img|input)(>| .*?>)<\/\1>#s',
+                // reset previous fix
+                '#(&nbsp;)&nbsp;(?![<\s])#',
+                // clean up ...
+                '#(?<=\>)(&nbsp;)(?=\<)#',
+                // --ibid
                 // Remove HTML comment(s) except IE comment(s)
-                '#\s*<!--(?!\[if\s).*?-->\s*|(?<!\>)\n+(?=\<[^!])#s'
-            ),
-            array(
+                '#\s*<!--(?!\[if\s).*?-->\s*|(?<!\>)\n+(?=\<[^!])#s',
+            ],
+            [
                 '<$1$2</$1>',
                 '$1$2$3',
                 '$1$2$3',
@@ -133,8 +143,8 @@ class TestCase extends OrchestraTestCase
                 '<$1$2',
                 '$1 ',
                 '$1',
-                ""
-            ),
+                "",
+            ],
             $input);
     }
 }

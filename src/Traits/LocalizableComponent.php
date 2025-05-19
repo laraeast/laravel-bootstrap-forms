@@ -4,38 +4,26 @@ namespace Laraeast\LaravelBootstrapForms\Traits;
 
 trait LocalizableComponent
 {
-    /**
-     * @var array|null
-     */
-    protected $locale;
+    protected \stdClass|array|null $locale = null;
 
     /**
      * Determine if the label will be translated or not.
-     *
-     * @var bool
      */
-    protected $transformLabel = true;
+    protected bool $transformLabel = true;
 
     /**
      * Add the given lang to the name attribute.
-     *
-     * @param array|null $locale
-     * @return $this
      */
-    public function locale($locale = null)
+    public function locale(\stdClass|array|null $locale = null): self
     {
         $this->locale = $locale;
 
-        $this->setDefaultLabel($this->name);
+        $this->setDefaultLabel();
 
         return $this;
     }
 
-    /**
-     * @param $transformLabel
-     * @return $this
-     */
-    public function transformLabel($transformLabel)
+    public function transformLabel(bool $transformLabel): self
     {
         $this->transformLabel = $transformLabel;
 
@@ -44,11 +32,8 @@ trait LocalizableComponent
 
     /**
      * Transform the properties to be used in view.
-     *
-     * @param array $properties
-     * @return array
      */
-    protected function transformProperties(array $properties)
+    protected function transformProperties(array $properties): array
     {
         $locale = optional($this->locale);
 

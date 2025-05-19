@@ -3,148 +3,92 @@
 namespace Laraeast\LaravelBootstrapForms\Traits;
 
 use Form;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 trait HasOpenAndClose
 {
     /**
      * Open the form tag.
-     *
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function open($url, $attributes = [])
+    public function open(string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::open(array_merge($attributes, ['url' => $url]));
+        return html()->form(
+            Str::upper(data_get($attributes, 'method', 'GET')),
+            $url,
+        )->attributes($attributes);
     }
 
     /**
      * Open the form tag with get method.
-     *
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function get($url, $attributes = [])
+    public function get(string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::open(array_merge($attributes, [
-            'url' => $url,
-            'method' => 'get',
-        ]));
+        return html()->form(method: 'GET', action: $url)->attributes(attributes: $attributes);
     }
 
     /**
      * Open the form tag with post method.
-     *
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function post($url, $attributes = [])
+    public function post(string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::open(array_merge($attributes, [
-            'url' => $url,
-            'method' => 'post',
-        ]));
+        return html()->form(method: 'POST', action: $url)->attributes(attributes: $attributes);
     }
 
     /**
      * Open the form tag with put method.
-     *
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function put($url, $attributes = [])
+    public function put(string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::open(array_merge($attributes, [
-            'url' => $url,
-            'method' => 'put',
-        ]));
+        return html()->form(method: 'PUT', action: $url)->attributes(attributes: $attributes);
     }
 
     /**
      * Open the form tag with patch method.
-     *
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function patch($url, $attributes = [])
+    public function patch(string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::open(array_merge($attributes, [
-            'url' => $url,
-            'method' => 'patch',
-        ]));
+        return html()->form(method: 'PATCH', action: $url)->attributes(attributes: $attributes);
     }
 
     /**
      * Open the form tag with delete method.
-     *
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function delete($url, $attributes = [])
+    public function delete(string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::open(array_merge($attributes, [
-            'url' => $url,
-            'method' => 'delete',
-        ]));
+        return html()->form(method: 'DELETE', action: $url)->attributes(attributes: $attributes);
     }
 
     /**
      * Open the form tag with model and put method.
-     *
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function model($model, $url, $attributes = [])
+    public function model(Model $model, string $url, string $method = 'PUT', array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return $this->putModel($model, $url, $attributes);
+        return html()->modelForm(model: $model, method: $method, action: $url)->attributes(attributes: $attributes);
     }
 
     /**
      * Open the form tag with model and put method.
-     *
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function putModel($model, $url, $attributes = [])
+    public function putModel(Model $model, string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::model($model, array_merge($attributes, [
-            'url' => $url,
-            'method' => 'put',
-        ]));
+        return $this->model($model, $url, 'PUT', $attributes);
     }
 
     /**
      * Open the form tag with model and patch method.
-     *
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @param $url
-     * @param array $attributes
-     * @return \Illuminate\Support\HtmlString
      */
-    public function patchModel($model, $url, $attributes = [])
+    public function patchModel(Model $model, string $url, array $attributes = []): \Spatie\Html\Elements\Form
     {
-        return Form::model($model, array_merge($attributes, [
-            'url' => $url,
-            'method' => 'patch',
-        ]));
+        return $this->model($model, $url, 'PATCH', $attributes);
     }
 
     /**
      * Close the form tag.
-     *
-     * @return \Illuminate\Support\HtmlString
      */
-    public function close()
+    public function close(): \Illuminate\Contracts\Support\Htmlable
     {
-        return Form::close();
+        return html()->closeModelForm();
     }
 }

@@ -10,8 +10,6 @@ class PasswordComponent extends TextualComponent
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'password';
+    protected string $viewPath = 'password';
 }

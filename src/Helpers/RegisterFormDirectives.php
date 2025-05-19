@@ -10,10 +10,8 @@ class RegisterFormDirectives
 {
     /**
      * Register @bsMultilangualFormTabs directive.
-     *
-     * @return void
      */
-    public function registerMultilangualFormTabs()
+    public function registerMultilangualFormTabs(): void
     {
         Blade::directive('bsMultilangualFormTabs', function () {
             $uniqid = Uuid::uuid1();
@@ -30,10 +28,8 @@ class RegisterFormDirectives
 
     /**
      * Register @endBsMultilangualFormTabs directive.
-     *
-     * @return void
      */
-    public function registerEndMultilangualFormTabs()
+    public function registerEndMultilangualFormTabs(): void
     {
         Blade::directive('endBsMultilangualFormTabs', function () {
             return '<?php $__env->stopPush(); endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); echo $__env->renderComponent(); ?>';
@@ -42,10 +38,8 @@ class RegisterFormDirectives
 
     /**
      * Register @multilangualForm directive.
-     *
-     * @return void
      */
-    public function registerMultilangualForm()
+    public function registerMultilangualForm(): void
     {
         Blade::directive('multilangualForm', function () {
             $initLoop = "\$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
@@ -58,10 +52,8 @@ class RegisterFormDirectives
 
     /**
      * Register @endMultilangualForm directive.
-     *
-     * @return void
      */
-    public function registerEndMultilangualForm()
+    public function registerEndMultilangualForm(): void
     {
         Blade::directive('endMultilangualForm', function () {
             return '<?php endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); ?>';
@@ -70,10 +62,8 @@ class RegisterFormDirectives
 
     /**
      * Register @formpost directive.
-     *
-     * @return void
      */
-    public function registerFormPost()
+    public function registerFormPost(): void
     {
         Blade::directive('formpost', function ($url, $attributes = []) {
             $attributes = json_encode($attributes);
@@ -84,20 +74,16 @@ class RegisterFormDirectives
 
     /**
      * Register @formpost directive.
-     *
-     * @return void
      */
-    public function registerEndFormPost()
+    public function registerEndFormPost(): void
     {
-        return $this->setCloseFormDirective('endformpost');
+        $this->setCloseFormDirective('endformpost');
     }
 
     /**
      * Register @formget directive.
-     *
-     * @return void
      */
-    public function registerFormGet()
+    public function registerFormGet(): void
     {
         Blade::directive('formget', function ($url, $attributes = []) {
             $attributes = json_encode($attributes);
@@ -108,20 +94,16 @@ class RegisterFormDirectives
 
     /**
      * Register @formget directive.
-     *
-     * @return void
      */
-    public function registerEndFormGet()
+    public function registerEndFormGet(): void
     {
-        return $this->setCloseFormDirective('endformget');
+        $this->setCloseFormDirective('endformget');
     }
 
     /**
      * Register @formput directive.
-     *
-     * @return void
      */
-    public function registerFormPut()
+    public function registerFormPut(): void
     {
         Blade::directive('formput', function ($url, $attributes = []) {
             $attributes = json_encode($attributes);
@@ -132,20 +114,16 @@ class RegisterFormDirectives
 
     /**
      * Register @formput directive.
-     *
-     * @return void
      */
-    public function registerEndFormPut()
+    public function registerEndFormPut(): void
     {
-        return $this->setCloseFormDirective('endformput');
+        $this->setCloseFormDirective('endformput');
     }
 
     /**
      * Register @form directive.
-     *
-     * @return void
      */
-    public function registerForm()
+    public function registerForm(): void
     {
         Blade::directive('form', function ($url, $attributes = []) {
             $attributes = json_encode($attributes);
@@ -156,20 +134,16 @@ class RegisterFormDirectives
 
     /**
      * Register @endform directive.
-     *
-     * @return void
      */
-    public function registerEndForm()
+    public function registerEndForm(): void
     {
-        return $this->setCloseFormDirective('endform');
+        $this->setCloseFormDirective('endform');
     }
 
     /**
      * Register the given close form directive.
-     *
-     * @return void
      */
-    private function setCloseFormDirective($directive)
+    private function setCloseFormDirective(string $directive): void
     {
         Blade::directive($directive, function () {
             return "<?php echo BsForm::close(); ?>";

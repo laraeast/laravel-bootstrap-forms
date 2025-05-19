@@ -4,10 +4,11 @@ return [
     /**
      * The path of form components views.
      *
+     * - 'BsForm::bootstrap5'  - Bootstrap 5
      * - 'BsForm::bootstrap4'  - Bootstrap 4
      * - 'BsForm::bootstrap3'  - Bootstrap 3
      */
-    'views' => 'BsForm::bootstrap4',
+    'views' => 'BsForm::bootstrap5',
 
     'checkboxes' => [
         /**

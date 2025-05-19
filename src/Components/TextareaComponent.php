@@ -12,18 +12,13 @@ class TextareaComponent extends TextualComponent implements LocalizableComponent
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'textarea';
+    protected string $viewPath = 'textarea';
 
     /**
      * Set textarea cols attribute.
-     *
-     * @param $cols
-     * @return $this
      */
-    public function cols($cols)
+    public function cols(int $cols): self
     {
         $this->attributes['cols'] = $cols;
 
@@ -32,11 +27,8 @@ class TextareaComponent extends TextualComponent implements LocalizableComponent
 
     /**
      * Set textarea rows attribute.
-     *
-     * @param $rows
-     * @return $this
      */
-    public function rows($rows)
+    public function rows(int $rows): self
     {
         $this->attributes['rows'] = $rows;
 

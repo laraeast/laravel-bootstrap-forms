@@ -4,11 +4,7 @@ namespace Laraeast\LaravelBootstrapForms\Components\Traits;
 
 trait HasPlaceholder
 {
-    /**
-     * @param $placeholder
-     * @return $this
-     */
-    public function placeholder($placeholder)
+    public function placeholder(string $placeholder): self
     {
         $this->attributes['placeholder'] = $placeholder;
 

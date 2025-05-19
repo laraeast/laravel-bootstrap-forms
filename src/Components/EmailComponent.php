@@ -10,8 +10,6 @@ class EmailComponent extends TextualComponent
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'email';
+    protected string $viewPath = 'email';
 }

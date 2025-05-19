@@ -19,41 +19,29 @@ use Laraeast\LaravelBootstrapForms\Components\PasswordComponent;
 use Laraeast\LaravelBootstrapForms\Components\CheckboxComponent;
 use Laraeast\LaravelBootstrapForms\Components\TextareaComponent;
 use Laraeast\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
+use Spatie\Html\Elements\Form;
 
 class BsForm
 {
     use HasOpenAndClose;
 
-    private $resource;
+    private string $resource = '';
 
-    /**
-     * @var array|null
-     */
-    protected $locale;
+    protected array $locales = [];
 
-    /**
-     * @var array
-     */
-    protected $locales = [];
+    protected \stdClass|array|null $locale = null;
 
     /**
      * The component style.
-     *
-     * @var string
      */
-    protected $style;
+    protected string $style = 'default';
 
     /**
      * Show inline validation errors.
-     *
-     * @var bool
      */
-    protected $inlineValidation = true;
+    protected bool $inlineValidation = true;
 
-    /**
-     * @var array
-     */
-    protected $components = [
+    protected array $components = [
         'text' => TextComponent::class,
         'textarea' => TextareaComponent::class,
         'password' => PasswordComponent::class,
@@ -68,17 +56,12 @@ class BsForm
         'file' => FileComponent::class,
     ];
 
-    /**
-     * @var
-     */
-    protected static $instance;
+    protected static ?self $instance = null;
 
     /**
      * The key to be used for the view error bag.
-     *
-     * @var string
      */
-    protected $errorBag = 'default';
+    protected string $errorBag = 'default';
 
     /**
      * BsForm constructor.
@@ -88,25 +71,18 @@ class BsForm
         $this->locales = Locales::get();
     }
 
-    /**
-     * @param $name
-     * @param $component
-     */
-    public function registerComponent($name, $component)
+    public function registerComponent(string $name, string $component): void
     {
         $this->components[$name] = $component;
     }
 
-    /**
-     * @param $name
-     * @param $arguments
-     * @return mixed
-     */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments): mixed
     {
         if (isset($this->components[$name])) {
             $instance = (new $this->components[$name]($this->resource))
                 ->errorBag($this->errorBag);
+
+            $instance->name($name);
 
             if ($instance instanceof LocalizableComponent) {
                 $instance->locale($this->locale);
@@ -124,32 +100,22 @@ class BsForm
 
             return $instance->init(...$arguments);
         }
-        if (in_array($name, $this->getFormBuilderMethods())) {
-            return app('form')->{$name}(...$arguments);
-        }
 
         $className = __CLASS__;
-        throw new MethodNotFoundException("method {$name} not found in {$className}!", $name, $className);
+        throw new \Exception("method {$name} not found in {$className}!", $name, $className);
     }
 
     /**
      * Set the default locale code.
-     *
-     * @param array|null $locale
-     * @return $this
      */
-    public function locale($locale = null)
+    public function locale(\stdClass|array|null $locale = null): self
     {
         $this->locale = $locale;
 
         return $this;
     }
 
-    /**
-     * @param $resource
-     * @return $this
-     */
-    public function resource($resource)
+    public function resource(string $resource): self
     {
         $this->resource = $resource;
 
@@ -158,11 +124,8 @@ class BsForm
 
     /**
      * The key to be used for the view error bag.
-     *
-     * @param  string  $bag
-     * @return $this
      */
-    public function errorBag($bag = 'default')
+    public function errorBag(string $bag = 'default'): self
     {
         $this->errorBag = $bag;
 
@@ -171,11 +134,8 @@ class BsForm
 
     /**
      * Set the components style.
-     *
-     * @param $style
-     * @return $this
      */
-    public function style($style = null)
+    public function style(?string $style = null): self
     {
         $this->style = $style;
 
@@ -184,10 +144,8 @@ class BsForm
 
     /**
      * Clear the components style.
-     *
-     * @return $this
      */
-    public function clearStyle()
+    public function clearStyle(): self
     {
         $this->style();
 
@@ -200,35 +158,14 @@ class BsForm
      * @param  bool  $bool
      * @return $this
      */
-    public function inlineValidation($bool = true)
+    public function inlineValidation(bool $bool = true): self
     {
         $this->inlineValidation = $bool;
 
         return $this;
     }
 
-    /**
-     * @return array
-     * @throws \ReflectionException
-     */
-    public function getFormBuilderMethods()
-    {
-        $class = new \ReflectionClass(FormBuilder::class);
-        $methods = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
-        $methodsList = [];
-        foreach ($methods as $method) {
-            if (! Str::startsWith($method->getName(), '__')) {
-                $methodsList[] = $method->getName();
-            }
-        }
-
-        return $methodsList;
-    }
-
-    /**
-     * @return static
-     */
-    public static function getInstance()
+    public static function getInstance(): self
     {
         if ($instance = static::$instance) {
             return $instance;
@@ -240,7 +177,7 @@ class BsForm
     /**
      * @return array
      */
-    public function getLocales()
+    public function getLocales(): array
     {
         return $this->locales;
     }

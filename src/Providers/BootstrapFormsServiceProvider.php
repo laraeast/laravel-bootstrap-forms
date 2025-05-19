@@ -10,10 +10,8 @@ class BootstrapFormsServiceProvider extends ServiceProvider
 {
     /**
      * BsForm any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadViewsFrom($this->srcPath('views'), 'BsForm');
 
@@ -35,10 +33,8 @@ class BootstrapFormsServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind('bootstrap.form', function () {
             return BsForm::getInstance();
@@ -49,7 +45,7 @@ class BootstrapFormsServiceProvider extends ServiceProvider
         );
     }
     
-    private function srcPath($path)
+    private function srcPath(string $path): string
     {
         return __DIR__.'/../'.$path;
     }

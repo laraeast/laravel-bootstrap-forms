@@ -6,23 +6,18 @@ class RadioComponent extends BaseComponent
 {
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'radio';
+    protected string $viewPath = 'radio';
 
     /**
      * @var bool
      */
-    protected $checked = false;
+    protected bool $checked = false;
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments): self
     {
         $this->name($name = $arguments[0] ?? null);
 
@@ -39,11 +34,7 @@ class RadioComponent extends BaseComponent
         return $this;
     }
 
-    /**
-     * @param bool $checked
-     * @return $this
-     */
-    public function checked($checked = true)
+    public function checked(bool $checked = true): self
     {
         $this->checked = ! ! $checked;
 
@@ -51,11 +42,9 @@ class RadioComponent extends BaseComponent
     }
 
     /**
-     * The variables with registerd in view component.
-     *
-     * @return array
+     * The registered variables in view component.
      */
-    protected function viewComposer()
+    protected function viewComposer(): array
     {
         return [
             'checked' => $this->checked,

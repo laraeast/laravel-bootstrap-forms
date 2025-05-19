@@ -8,32 +8,19 @@ class CheckboxComponent extends BaseComponent
 {
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'checkbox';
+    protected string $viewPath = 'checkbox';
 
-    /**
-     * @var bool
-     */
-    protected $checked = false;
+    protected bool $checked = false;
 
-    /**
-     * @var bool
-     */
-    protected $hasDefaultValue = true;
+    protected bool $hasDefaultValue = true;
 
-    /**
-     * @var mixed
-     */
-    protected $defaultValue = 0;
+    protected mixed $defaultValue = 0;
 
     /**
      * Set resource name property.
-     *
-     * @param $resource
      */
-    public function __construct($resource)
+    public function __construct(string $resource)
     {
         parent::__construct($resource);
 
@@ -42,11 +29,8 @@ class CheckboxComponent extends BaseComponent
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments): self
     {
         $this->name($name = $arguments[0] ?? null);
 
@@ -63,22 +47,14 @@ class CheckboxComponent extends BaseComponent
         return $this;
     }
 
-    /**
-     * @param bool $checked
-     * @return $this
-     */
-    public function checked($checked = true)
+    public function checked(bool $checked = true): self
     {
         $this->checked = ! ! $checked;
 
         return $this;
     }
 
-    /**
-     * @param mixed $value
-     * @return $this
-     */
-    public function default($value = 0)
+    public function default(mixed $value = 0): self
     {
         $this->hasDefaultValue = true;
 
@@ -87,20 +63,14 @@ class CheckboxComponent extends BaseComponent
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function withoutDefault()
+    public function withoutDefault(): self
     {
         $this->hasDefaultValue = false;
 
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function withDefault()
+    public function withDefault(): self
     {
         $this->hasDefaultValue = true;
 
@@ -109,10 +79,8 @@ class CheckboxComponent extends BaseComponent
 
     /**
      * The variables with registered in view component.
-     *
-     * @return array
      */
-    protected function viewComposer()
+    protected function viewComposer(): array
     {
         return [
             'checked' => $this->checked,

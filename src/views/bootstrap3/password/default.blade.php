@@ -1,9 +1,9 @@
 <div class="form-group{{ $errors->{$errorBag}->has($nameWithoutBrackets) ? ' has-error' : '' }}">
     @if($label)
-        {{ Form::label($name, $label, ['class' => 'content-label']) }}
+        {{ html()->label($label, $name)->attributes(['class' => 'content-label']) }}
     @endif
 
-    {{ Form::password($name, array_merge(['class' => 'form-control'], $attributes)) }}
+    {{ html()->password($name)->attributes(array_merge(['class' => 'form-control'], $attributes)) }}
 
     @if($inlineValidation)
         @if($errors->{$errorBag}->has($nameWithoutBrackets))

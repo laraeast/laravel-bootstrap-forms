@@ -4,22 +4,14 @@ namespace Laraeast\LaravelBootstrapForms\Components\Traits;
 
 trait HasMinLengthAndMaxLengthAttributes
 {
-    /**
-     * @param $max
-     * @return $this
-     */
-    public function maxLength($max)
+    public function maxLength(int $max): self
     {
         $this->attributes['maxlength'] = $max;
 
         return $this;
     }
 
-    /**
-     * @param $min
-     * @return $this
-     */
-    public function minLength($min)
+    public function minLength(int $min): self
     {
         $this->attributes['minlength'] = $min;
 

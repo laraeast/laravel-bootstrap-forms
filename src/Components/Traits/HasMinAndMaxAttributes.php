@@ -4,33 +4,21 @@ namespace Laraeast\LaravelBootstrapForms\Components\Traits;
 
 trait HasMinAndMaxAttributes
 {
-    /**
-     * @param $max
-     * @return $this
-     */
-    public function max($max)
+    public function max(float $max): self
     {
         $this->attributes['max'] = $max;
 
         return $this;
     }
 
-    /**
-     * @param $min
-     * @return $this
-     */
-    public function min($min)
+    public function min(float $min): self
     {
         $this->attributes['min'] = $min;
 
         return $this;
     }
 
-    /**
-     * @param $step
-     * @return $this
-     */
-    public function step($step)
+    public function step(float $step): self
     {
         $this->attributes['step'] = $step;
 

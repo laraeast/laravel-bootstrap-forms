@@ -9,10 +9,8 @@ class FormDirectives
 {
     /**
      * Register all the form directives.
-     *
-     * @return void
      */
-    public static function register()
+    public static function register(): void
     {
         $instance = new RegisterFormDirectives;
 

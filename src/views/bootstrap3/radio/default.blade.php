@@ -1,7 +1,13 @@
+@php($id = 'radio-'.Str::random('4').'-'.$name)
+@php($input = html()->radio($name)->value($value)->attributes(['id' => $id]))
+
+@if($checked)
+    @php($input = $input->checked($checked))
+@endif
 <div class="form-group{{ $errors->{$errorBag}->has($nameWithoutBrackets) ? ' has-error' : '' }}">
     <div class="checkbox">
-        <label>
-            {{ Form::radio($name, $value, $checked) }} {!! $label !!}
+        <label for="{{ $id }}">
+            {{ $input }} {!! $label !!}
         </label>
     </div>
     @if($inlineValidation)

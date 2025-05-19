@@ -10,8 +10,6 @@ class NumberComponent extends TextualComponent
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'number';
+    protected string $viewPath = 'number';
 }

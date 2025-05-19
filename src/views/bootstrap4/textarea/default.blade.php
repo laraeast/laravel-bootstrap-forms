@@ -1,12 +1,18 @@
 <?php $invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' is-invalid' : ''; ?>
 <div class="form-group">
     @if($label)
-        {{ Form::label($name, $label) }}
+        {{ html()->label($label, $name) }}
     @endif
-    {{ Form::textarea($name, $value, array_merge([
+    @php($input = html()->textarea($name)->attributes(array_merge([
         'class' => 'form-control'.$invalidClass,
         'style' => 'resize: vertical',
-    ], $attributes)) }}
+    ], $attributes)))
+
+    @if($value)
+        @php($input = $input->value($value))
+    @endif
+
+    {{ $input }}
 
     @if($inlineValidation)
         @if($errors->{$errorBag}->has($nameWithoutBrackets))

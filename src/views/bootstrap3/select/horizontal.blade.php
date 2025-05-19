@@ -1,14 +1,21 @@
 <div class="form-group{{ $errors->{$errorBag}->has($nameWithoutBrackets) ? ' has-error' : '' }}">
     <div class="row">
+
         @if($label)
-            {{ Form::label($name, $label, ['class' => 'content-label col-md-2']) }}
+            {{ html()->label($label, $name)->attributes(['class' => 'content-label col-sm-2']) }}
         @else
-            <div class="col-md-2"></div>
+            <div class="col-sm-2"></div>
         @endif
 
-        <div class="col-md-10">
+        @php($input = html()->select($name, $options)->attributes(array_merge(['class' => 'form-control'], $attributes)))
 
-            {{ Form::textarea($name, $value, array_merge(['class' => 'form-control', 'style' => 'resize: vertical'], $attributes)) }}
+        @if($value)
+            @php($input = $input->value($value))
+        @endif
+
+        <div class="col-sm-10">
+
+            {{ $input }}
 
             @if($inlineValidation)
                 @if($errors->{$errorBag}->has($nameWithoutBrackets))

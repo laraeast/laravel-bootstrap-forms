@@ -10,8 +10,6 @@ class DateComponent extends TextualComponent
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'date';
+    protected string $viewPath = 'date';
 }

@@ -1,1 +1,1 @@
-{{ Form::submit($label, $attributes + ['class' => "btn $className", 'name' => $name]) }}
+{{ html()->submit($label)->attributes( $attributes + ['class' => "btn $className", 'name' => $name]) }}

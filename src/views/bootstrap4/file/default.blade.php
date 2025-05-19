@@ -1,9 +1,10 @@
 <?php $invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' is-invalid' : ''; ?>
 <div class="form-group">
     @if($label)
-        {{ Form::label($name, $label) }}
+        {{ html()->label($label, $name) }}
     @endif
-    {{ Form::file($name, array_merge(['class' => 'form-control'.$invalidClass], $attributes)) }}
+
+    {{ html()->file($name)->attributes(array_merge(['class' => 'form-control p-1'.$invalidClass], $attributes)) }}
 
     @if($inlineValidation)
         @if($errors->{$errorBag}->has($nameWithoutBrackets))

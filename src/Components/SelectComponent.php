@@ -10,23 +10,15 @@ class SelectComponent extends BaseComponent
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'select';
+    protected string $viewPath = 'select';
 
-    /**
-     * @var array
-     */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments): self
     {
         $this->name($name = $arguments[0] ?? null);
 
@@ -43,22 +35,14 @@ class SelectComponent extends BaseComponent
         return $this;
     }
 
-    /**
-     * @param array $options
-     * @return $this
-     */
-    public function options($options = [])
+    public function options(array $options = []): self
     {
         $this->options = $options;
 
         return $this;
     }
 
-    /**
-     * @param bool $multiple
-     * @return $this
-     */
-    public function multiple($multiple = true)
+    public function multiple(bool $multiple = true): self
     {
         if ($multiple) {
             $this->attributes['multiple'] = 'multiple';
@@ -68,11 +52,9 @@ class SelectComponent extends BaseComponent
     }
 
     /**
-     * The variables with registerd in view component.
-     *
-     * @return array
+     * The registered variables in view component.
      */
-    protected function viewComposer()
+    protected function viewComposer(): array
     {
         return [
             'options' => $this->options,

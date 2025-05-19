@@ -35,14 +35,14 @@ php artisan vendor:publish --tag=locales:flags
 <a name="opening-a-form"></a>
 # # Opening A Form
 ```blade
-{{ BsForm::open(['url' => 'foo/bar']) }}
+{{ BsForm::open($url) }}
 //
 {{ BsForm::close() }}
 ```
 > By default, a `POST` method will be assumed; however, you are free to specify another method:
 
 ```blade
-{{ BsForm::open(['url' => 'foo/bar', 'method' => 'post']) }}
+{{ BsForm::open($url, ['method' => 'post']) }}
 ```
 
 > Note: Since HTML forms only support `POST` and `GET`, `PUT` and `DELETE` methods will be spoofed by automatically adding a `_method` hidden field to your form.
@@ -103,6 +103,17 @@ php artisan vendor:publish --tag=locales:flags
 {{ BsForm::email($name)->value($value)->label($label) }}
 {{ BsForm::file($name)->label('Upload File') }}
 ```
+
+## Translatable Inputs (text & textarea)
+
+```blade
+@bsMultilangualFormTabs
+    {{ BsForm::text('title')->value(old('title:'.$locale->code))->label($label) }}
+@endBsMultilangualFormTabs
+```
+> The name attribute will be `name:{lang}`
+> 
+> The variable `$locale` is preset inside `@bsMultilangualFormTabs` and `@endBsMultilangualFormTabs` and it contains the iterator of `Locales::get()` see: [Laravel Locales Package](https://github.com/laraeast/laravel-locales)
 
 <a name="checkboxes"></a>
 # # Checkboxes and Radio Buttons

@@ -1,10 +1,24 @@
+<?php
+$id = 'checkbox-'.Str::random('4').'-'.$name;
+?>
+@php($input = html()->checkbox($name)->value($value)->attributes(['id' => $id]))
+
+@if($checked)
+    @php($input = $input->checked($checked))
+@endif
+
 <div class="form-group{{ $errors->{$errorBag}->has($nameWithoutBrackets) ? ' has-error' : '' }}">
     <div class="checkbox">
-        <label>
+        <label for="{{ $id }}">
             @if($hasDefaultValue)
-                {{ Form::hidden($name, $defaultValue) }}
+                @php($hiddenInput = html()->hidden($name))
+
+                @if($defaultValue)
+                    @php($hiddenInput = $hiddenInput->value($defaultValue))
+                @endif
+                {{ $hiddenInput }}
             @endif
-            {{ Form::checkbox($name, $value, $checked) }} {!! $label !!}
+                {{ $input }} {!! $label !!}
         </label>
     </div>
     @if($inlineValidation)

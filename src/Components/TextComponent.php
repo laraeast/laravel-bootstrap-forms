@@ -12,8 +12,6 @@ class TextComponent extends TextualComponent implements LocalizableComponent
 
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'text';
+    protected string $viewPath = 'text';
 }

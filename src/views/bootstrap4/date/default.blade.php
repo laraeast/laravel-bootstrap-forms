@@ -1,9 +1,15 @@
 <?php $invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' is-invalid' : ''; ?>
 <div class="form-group">
     @if($label)
-        {{ Form::label($name, $label) }}
+        {{ html()->label($label, $name) }}
     @endif
-    {{ Form::date($name, $value, array_merge(['class' => 'form-control'.$invalidClass], $attributes)) }}
+    @php($input = html()->input('date', $name)->attributes(array_merge(['class' => 'form-control'.$invalidClass], $attributes)))
+
+    @if($value)
+        @php($input = $input->value($value))
+    @endif
+
+    {{ $input }}
 
     @if($inlineValidation)
         @if($errors->{$errorBag}->has($nameWithoutBrackets))
