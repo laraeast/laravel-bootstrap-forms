@@ -104,7 +104,8 @@ class BsForm
         }
 
         $className = __CLASS__;
-        throw new \Exception("method {$name} not found in {$className}!", $name, $className);
+
+        throw new \Exception("Method \"{$name}()\" not found in {$className}!");
     }
 
     /**
