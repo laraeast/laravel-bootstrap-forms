@@ -19,6 +19,7 @@
         "spatie/laravel-html": "^3.5"
     },
     "require-dev": {
+        "php": "^8.0",
         "orchestra/testbench": "^10.3",
         "mockery/mockery": "^1.6"
     },
