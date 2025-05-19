@@ -34,7 +34,7 @@ class RadioComponent extends BaseComponent
         return $this;
     }
 
-    public function checked(bool $checked = true): self
+    public function checked(?bool $checked = true): self
     {
         $this->checked = ! ! $checked;
 
