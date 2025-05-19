@@ -3,14 +3,13 @@
 namespace Laraeast\LaravelBootstrapForms;
 
 use Laraeast\LaravelLocales\Facades\Locales;
-use Illuminate\Support\Str;
-use Collective\Html\FormBuilder;
 use Laraeast\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Laraeast\LaravelBootstrapForms\Components\FileComponent;
 use Laraeast\LaravelBootstrapForms\Components\TextComponent;
 use Laraeast\LaravelBootstrapForms\Components\TimeComponent;
 use Laraeast\LaravelBootstrapForms\Components\DateComponent;
 use Laraeast\LaravelBootstrapForms\Components\EmailComponent;
+use Laraeast\LaravelBootstrapForms\Components\PriceComponent;
 use Laraeast\LaravelBootstrapForms\Components\RadioComponent;
 use Laraeast\LaravelBootstrapForms\Components\NumberComponent;
 use Laraeast\LaravelBootstrapForms\Components\SelectComponent;
@@ -54,6 +53,7 @@ class BsForm
         'checkbox' => CheckboxComponent::class,
         'radio' => RadioComponent::class,
         'file' => FileComponent::class,
+        'price' => PriceComponent::class,
     ];
 
     protected static ?self $instance = null;
