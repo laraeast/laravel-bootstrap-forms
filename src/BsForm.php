@@ -8,6 +8,7 @@ use Laraeast\LaravelBootstrapForms\Components\FileComponent;
 use Laraeast\LaravelBootstrapForms\Components\TextComponent;
 use Laraeast\LaravelBootstrapForms\Components\TimeComponent;
 use Laraeast\LaravelBootstrapForms\Components\DateComponent;
+use Laraeast\LaravelBootstrapForms\Components\ColorComponent;
 use Laraeast\LaravelBootstrapForms\Components\EmailComponent;
 use Laraeast\LaravelBootstrapForms\Components\PriceComponent;
 use Laraeast\LaravelBootstrapForms\Components\RadioComponent;
@@ -54,6 +55,7 @@ class BsForm
         'radio' => RadioComponent::class,
         'file' => FileComponent::class,
         'price' => PriceComponent::class,
+        'color' => ColorComponent::class,
     ];
 
     protected static ?self $instance = null;
