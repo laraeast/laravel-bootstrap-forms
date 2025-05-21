@@ -1,6 +1,6 @@
 <?php $tabuniqid = 'tab-'.$uniqid; ?>
 <ul class="nav nav-tabs" id="{{ $tabuniqid }}" role="tablist">
-    @multilangualForm
+    @multilingualForm
     <li class="nav-item">
         <a class="nav-link{{ $loop->index == 0 ? ' active' : '' }}"
            id="{{ $tabuniqid.$locale->code }}-tab"
