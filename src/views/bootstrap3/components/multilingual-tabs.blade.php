@@ -3,7 +3,7 @@
     <ul class="nav nav-tabs" role="tablist">
         @multilingualForm
         <li role="presentation" class="{{ $loop->index == 0 ? 'active' : '' }}">
-            <a href="#{{ $uniqid.$locale->code }}" aria-controls="{{ $uniqid.$locale->code }}" role="tab" data-toggle="tab">
+            <a href="#{{ $uniqid.'-'.$locale->code }}" aria-controls="{{ $uniqid.'-'.$locale->code }}" role="tab" data-toggle="tab">
                 <img src="{{ $locale->flag }}" alt="">
                 {{ $locale->name }}
             </a>

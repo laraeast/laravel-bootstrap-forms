@@ -3,11 +3,11 @@
     @multilingualForm
     <li class="nav-item">
         <a class="nav-link{{ $loop->index == 0 ? ' active' : '' }}"
-           id="{{ $tabuniqid.$locale->code }}-tab"
+           id="{{ $tabuniqid.'-'.$locale->code }}-tab"
            data-toggle="tab"
-           href="#{{ $tabuniqid.$locale->code }}"
+           href="#{{ $tabuniqid.'-'.$locale->code }}"
            role="tab"
-           aria-controls="{{ $tabuniqid.$locale->code }}"
+           aria-controls="{{ $tabuniqid.'-'.$locale->code }}"
            aria-selected="{{ $loop->index == 0 ? 'true' : 'false' }}">
             <img src="{{ $locale->flag }}" class="mx-1" alt="">
             {{ $locale->name }}
@@ -18,9 +18,9 @@
 <div class="tab-content" id="{{ $tabuniqid }}-content">
     @multilingualForm
     <div class="tab-pane fade{{ $loop->index == 0 ? ' show active' : '' }}"
-         id="{{ $tabuniqid.$locale->code }}"
+         id="{{ $tabuniqid.'-'.$locale->code }}"
          role="tabpanel"
-         aria-labelledby="{{ $tabuniqid.$locale->code }}-tab">
+         aria-labelledby="{{ $tabuniqid.'-'.$locale->code }}-tab">
         <div class="py-2">
             @stack($uniqid.$locale->code)
         </div>
