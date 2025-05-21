@@ -16,7 +16,7 @@
         @endMultilingualForm
     </div>
 </nav>
-<div class="tab-content" id="{{ $tabuniqid }}Content">
+<div class="tab-content" id="{{ $tabuniqid }}-content">
     @multilingualForm
     <div class="tab-pane fade{{ $loop->index == 0 ? ' show active' : '' }}"
          id="{{ $tabuniqid.'-'.$locale->code }}"
