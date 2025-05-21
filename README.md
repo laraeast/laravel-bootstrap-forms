@@ -1,6 +1,6 @@
 # # Laravel Bootstrap Forms.
 <p align="center">
-<a href="https://travis-ci.org/laraeast/laravel-bootstrap-forms"><img src="https://travis-ci.org/laraeast/laravel-bootstrap-forms.svg" alt="Build Status"></a>
+<a href="https://github.com/laraeast/laravel-bootstrap-forms/actions/workflows/tests.yml"><img src="https://github.com/laraeast/laravel-bootstrap-forms/actions/workflows/tests.yml/badge.svg?branch=master" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laraeast/laravel-bootstrap-forms"><img src="https://poser.pugx.org/laraeast/laravel-bootstrap-forms/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laraeast/laravel-bootstrap-forms"><img src="https://poser.pugx.org/laraeast/laravel-bootstrap-forms/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laraeast/laravel-bootstrap-forms"><img src="https://poser.pugx.org/laraeast/laravel-bootstrap-forms/license.svg" alt="License"></a>
