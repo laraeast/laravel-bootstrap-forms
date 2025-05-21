@@ -77,6 +77,16 @@ class SubmitComponent extends BaseComponent
     }
 
     /**
+     * Set given style for the button.
+     */
+    public function color(string $color): self
+    {
+        $this->className = "btn-{$color}";
+
+        return $this;
+    }
+
+    /**
      * The registered variables in view component.
      */
     protected function viewComposer(): array
