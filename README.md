@@ -175,6 +175,8 @@ php artisan vendor:publish --tag=locales:flags
 {{ BsForm::submit('Click Me!')->info() }}
 {{ BsForm::submit('Click Me!')->warning() }}
 {{ BsForm::submit('Click Me!')->danger() }}
+{{ BsForm::submit('Click Me!')->color('secondary') }}
+{{ BsForm::submit('Click Me!')->color('outline-secondary') }}
 ``` 
 
 <a name="metods"></a>
