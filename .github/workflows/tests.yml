@@ -1,4 +1,4 @@
-name: Run Laravel Bootstrap Forms Test
+name: tests
 
 on:
   push:
