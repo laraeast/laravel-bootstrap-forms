@@ -104,16 +104,16 @@ php artisan vendor:publish --tag=locales:flags
 {{ BsForm::file($name)->label('Upload File') }}
 ```
 
-## Translatable Inputs (text & textarea)
+## Multilingual Forms (text & textarea)
 
 ```blade
-@bsMultilangualFormTabs
+@multilingualFormTabs
     {{ BsForm::text('title')->value(old('title:'.$locale->code))->label($label) }}
-@endBsMultilangualFormTabs
+@endMultilingualFormTabs
 ```
 > The name attribute will be `name:{lang}`
 > 
-> The variable `$locale` is preset inside `@bsMultilangualFormTabs` and `@endBsMultilangualFormTabs` and it contains the iterator of `Locales::get()` see: [Laravel Locales Package](https://github.com/laraeast/laravel-locales)
+> The variable `$locale` is preset inside `@multilingualFormTabs` and `@endMultilingualFormTabs` and it contains the iterator of `Locales::get()` see: [Laravel Locales Package](https://github.com/laraeast/laravel-locales)
 
 <a name="checkboxes"></a>
 # # Checkboxes and Radio Buttons

@@ -4,6 +4,7 @@ namespace Laraeast\LaravelBootstrapForms\Helpers;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Config;
 
 class FormDirectives
 {
@@ -12,12 +13,32 @@ class FormDirectives
      */
     public static function register(): void
     {
-        $instance = new RegisterFormDirectives;
+        Blade::directive('multilingualFormTabs', function () {
+            $uniqid = Str::ulid();
 
-        collect(get_class_methods(RegisterFormDirectives::class))->each(function ($method) use ($instance) {
-            if (Str::startsWith($method, 'register')) {
-                $instance->{$method}();
-            }
+            $view = Config::get('laravel-bootstrap-forms.views').'.components.multilingual-tabs';
+
+            $initLoop = "\$__env->startComponent('$view', ['uniqid' => '$uniqid']); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
+
+            $iterateLoop = "\$__env->startPush('$uniqid'.\$locale->code); \$__env->incrementLoopIndices(); \$loop = \$__env->getLastLoop(); BsForm::locale(\$locale);";
+
+            return "<?php {$initLoop} foreach(\$__currentLoopData as \$locale): {$iterateLoop} ?>";
+        });
+
+        Blade::directive('endMultilingualFormTabs', function () {
+            return '<?php $__env->stopPush(); endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); echo $__env->renderComponent(); ?>';
+        });
+
+        Blade::directive('multilingualForm', function () {
+            $initLoop = "\$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
+
+            $iterateLoop = '$__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); BsForm::locale($locale);';
+
+            return "<?php {$initLoop} foreach(\$__currentLoopData as \$locale): {$iterateLoop} ?>";
+        });
+
+        Blade::directive('endMultilingualForm', function () {
+            return '<?php endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); ?>';
         });
     }
 }

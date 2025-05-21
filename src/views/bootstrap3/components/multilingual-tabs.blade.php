@@ -1,22 +1,22 @@
 <div>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        @multilangualForm
+        @multilingualForm
         <li role="presentation" class="{{ $loop->index == 0 ? 'active' : '' }}">
             <a href="#{{ $uniqid.$locale->code }}" aria-controls="{{ $uniqid.$locale->code }}" role="tab" data-toggle="tab">
                 <img src="{{ $locale->flag }}" alt="">
                 {{ $locale->name }}
             </a>
         </li>
-        @endMultilangualForm
+        @endMultilingualForm
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content" style="margin-top: 10px;">
-        @multilangualForm
+        @multilingualForm
         <div role="tabpanel" class="tab-pane{{ $loop->index == 0 ? ' active' : '' }}" id="{{ $uniqid.$locale->code }}">
             @stack($uniqid.$locale->code)
         </div>
-        @endMultilangualForm
+        @endMultilingualForm
     </div>
 </div>
