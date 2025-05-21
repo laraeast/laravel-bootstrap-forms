@@ -14,7 +14,7 @@
     <!-- Tab panes -->
     <div class="tab-content" style="margin-top: 10px;">
         @multilingualForm
-        <div role="tabpanel" class="tab-pane{{ $loop->index == 0 ? ' active' : '' }}" id="{{ $uniqid.$locale->code }}">
+        <div role="tabpanel" class="tab-pane fade{{ $loop->index == 0 ? ' active in' : '' }}" id="{{ $uniqid.'-'.$locale->code }}">
             @stack($uniqid.$locale->code)
         </div>
         @endMultilingualForm
