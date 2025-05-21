@@ -13,10 +13,10 @@
             {{ $locale->name }}
         </a>
     </li>
-    @endMultilangualForm
+    @endMultilingualForm
 </ul>
 <div class="tab-content" id="{{ $tabuniqid }}-content">
-    @multilangualForm
+    @multilingualForm
     <div class="tab-pane fade{{ $loop->index == 0 ? ' show active' : '' }}"
          id="{{ $tabuniqid.$locale->code }}"
          role="tabpanel"
@@ -25,5 +25,5 @@
             @stack($uniqid.$locale->code)
         </div>
     </div>
-    @endMultilangualForm
+    @endMultilingualForm
 </div>
