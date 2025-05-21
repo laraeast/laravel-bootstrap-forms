@@ -1,4 +1,4 @@
 
-@bsMultilangualFormTabs
+@multilingualFormTabs
 {{ BsForm::text('body') }}
-@endBsMultilangualFormTabs
+@endMultilingualFormTabs
