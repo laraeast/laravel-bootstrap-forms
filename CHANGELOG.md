@@ -13,5 +13,5 @@
 
 ### v6.0.0
 
-- Remove form package
+- Use `spatie/laravel-html` instead of `laravelcollective/html` package.
 - Add support for bootstrap5
