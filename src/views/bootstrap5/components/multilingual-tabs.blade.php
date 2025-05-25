@@ -1,7 +1,7 @@
 <?php $tabuniqid = 'tab-'.$uniqid; ?>
-<nav>
-    <div class="nav nav-tabs" id="{{ $tabuniqid }}" role="tablist">
-        @multilingualForm
+<ul class="nav nav-tabs" id="{{ $tabuniqid }}" role="tablist">
+    @multilingualForm
+    <li class="nav-item" role="presentation">
         <button class="nav-link{{ $loop->index == 0 ? ' active' : '' }}"
                 id="{{ $tabuniqid.'-'.$locale->code }}-tab"
                 data-bs-toggle="tab"
@@ -13,9 +13,9 @@
             <img src="{{ $locale->flag }}" class="mx-1" alt="">
             {{ $locale->name }}
         </button>
-        @endMultilingualForm
-    </div>
-</nav>
+    </li>
+    @endMultilingualForm
+</ul>
 <div class="tab-content" id="{{ $tabuniqid }}-content">
     @multilingualForm
     <div class="tab-pane fade{{ $loop->index == 0 ? ' show active' : '' }}"
