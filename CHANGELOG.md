@@ -1,5 +1,7 @@
 # ChangeLog
 
+### v7.3.3
+- Styling password icon
 ### v7.3.2
 - Fix password error message issue
 ### v7.3.1
