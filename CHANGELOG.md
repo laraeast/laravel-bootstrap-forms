@@ -1,5 +1,8 @@
 # ChangeLog
 
+### v7.2.0
+- Add toggle icon for show & hide password ([58d3159](https://github.com/laraeast/laravel-bootstrap-forms/commit/58d31597df653fe464bb997c1d4b3b5d14655a42))
+
 ### v7.1.1
 - modify tab content id in bootstrap5
 
