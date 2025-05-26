@@ -18,7 +18,7 @@
 - [Add Custom Style To The Component](#custom-style)
 - [Using Multilingual Form Tabs](#multilingual)
 - [Manage Locales](#locales)
-- [Using Bootstrap 3](#bootstrap3)
+- [Using Bootstrap 3 or 4](#bootstrap3)
 - [Add Custom Component](#custom-component)
 
 <a name="installation"></a>
