@@ -2,6 +2,7 @@
 
 namespace Laraeast\LaravelBootstrapForms;
 
+use Laraeast\LaravelBootstrapForms\Components\Base64ImageComponent;
 use Laraeast\LaravelLocales\Facades\Locales;
 use Laraeast\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Laraeast\LaravelBootstrapForms\Components\FileComponent;
@@ -56,6 +57,7 @@ class BsForm
         'file' => FileComponent::class,
         'price' => PriceComponent::class,
         'color' => ColorComponent::class,
+        'base64Image' => Base64ImageComponent::class,
     ];
 
     protected static ?self $instance = null;

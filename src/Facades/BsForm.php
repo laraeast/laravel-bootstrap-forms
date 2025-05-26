@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Laraeast\LaravelBootstrapForms\Components\SelectComponent select(?string $name = null, array $options = [], mixed $value = null)
  * @method static \Laraeast\LaravelBootstrapForms\Components\PriceComponent price(?string $name = null, mixed $value = null)
  * @method static \Laraeast\LaravelBootstrapForms\Components\ColorComponent color(?string $name = null, mixed $value = null)
+ * @method static \Laraeast\LaravelBootstrapForms\Components\Base64ImageComponent base64Image(?string $name = null, mixed $value = null)
  * @method static \Laraeast\LaravelBootstrapForms\Components\SubmitComponent submit(?string $label = null, ?string $name = null, mixed $value = null)
  * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self open(string $url, array $attributes = [])
  * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self resource(string $resource)

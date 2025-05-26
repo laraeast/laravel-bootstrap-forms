@@ -8,7 +8,7 @@
 
 - [Installation](#installation)
 - [Opening A Form](#opening-a-form)
-- [Text, Text Area, Date, Number & Password Fields](#fields)
+- [Text, Text Area, Date, Number, Files, Base64Image & Password Fields](#fields)
 - [Checkboxes and Radio Buttons](#checkboxes)
 - [Drop-Down Lists](#dropdown)
 - [Generating A Submit Button](#submit)
@@ -158,6 +158,45 @@ php artisan vendor:publish --tag=locales:flags
          'Cats' => ['leopard' => 'Leopard'],
          'Dogs' => ['spaniel' => 'Spaniel'],
    ]) }}
+```
+
+## File
+
+```blade
+{{ BsForm::file('attachment') }}
+{{ BsForm::file('attachments')->multiple() }}
+```
+## Base64Image (with preview)
+
+```blade
+{{ BsForm::base64image('avatar') }}
+{{ BsForm::base64image('avatar')->label('Avatar') }}
+{{ BsForm::base64image('avatar')
+    ->label('Avatar')
+    ->uploadLabel('Upload Picture')
+    ->resetLabel('Reset Picture')
+    ->uploadColor('primary')
+    ->resetColor('danger') }}
+{{ BsForm::base64image('avatar')
+    ->label('Avatar')
+    ->default('/path/to/default/preview') }}
+```
+> Regarding upload label & reset label, you can add them into translation file for the resource in `actions.{resource_name}` array, for example if the resource name is `users` and the field name is `avatar`, You should add the following translation `lang/en/users.php`:
+```php
+<?php
+
+return [
+    'actions' => [
+        'avatar' => [
+            'upload' => 'Upload image',
+            'reset' => 'Reset image',
+        ],
+    ],
+    'notes' => [
+        'avatar' => 'Allowed JPG, GIF or PNG. Max size of 800K',
+    ],
+    // ...
+];
 ```
 
 <a name="submit"></a>
