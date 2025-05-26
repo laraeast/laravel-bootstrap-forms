@@ -35,9 +35,9 @@
         </div>
         @if($inlineValidation)
             @if($errors->{$errorBag}->has($nameWithoutBrackets))
-                <div class="invalid-feedback">
+                <small class="form-text text-danger">
                     {{ $errors->{$errorBag}->first($nameWithoutBrackets) }}
-                </div>
+                </small>
             @else
                 <small class="form-text text-muted">{!! $note !!}</small>
             @endif
