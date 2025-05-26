@@ -60,7 +60,7 @@ class PriceComponent extends TextualComponent
 
     protected function viewComposer(): array
     {
-        return array_merge_recursive(parent::viewComposer(), [
+        return array_merge(parent::viewComposer(), [
             'currency' => $this->currency,
             'step' => $this->step,
         ]);

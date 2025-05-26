@@ -1,5 +1,8 @@
 # ChangeLog
 
+### v7.3.0
+- Add base64 image component ([#7](https://github.com/laraeast/laravel-bootstrap-forms/pull/7))
+- Use `array_merge` instead of `array_merge_recursive` in price component ([a9b8f9f](https://github.com/laraeast/laravel-bootstrap-forms/pull/7/commits/a9b8f9f560e3bcbb808cc5ba81858fa161ffbbed))
 ### v7.2.0
 - Add toggle icon for show & hide password ([58d3159](https://github.com/laraeast/laravel-bootstrap-forms/commit/58d31597df653fe464bb997c1d4b3b5d14655a42))
 
