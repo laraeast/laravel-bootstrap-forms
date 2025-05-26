@@ -1,5 +1,7 @@
 # ChangeLog
 
+### v7.3.1
+- Fix base64 image component responsive
 ### v7.3.0
 - Add base64 image component ([#7](https://github.com/laraeast/laravel-bootstrap-forms/pull/7))
 - Use `array_merge` instead of `array_merge_recursive` in price component ([a9b8f9f](https://github.com/laraeast/laravel-bootstrap-forms/pull/7/commits/a9b8f9f560e3bcbb808cc5ba81858fa161ffbbed))

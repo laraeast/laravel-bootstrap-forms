@@ -5,7 +5,7 @@
     @endif
 
     <div class="col-sm-10">
-        <div class="image-preview d-flex align-items-start align-items-sm-center gap-6 pb-4" style="gap: 1.5rem">
+        <div class="image-preview d-flex align-items-start align-items-sm-center pb-4" style="gap: 1.5rem; min-width: 270px;">
             <img
                     src="{{ $value ?: $default }}"
                     alt="user-avatar"
@@ -15,11 +15,11 @@
 
             <div class="button-wrapper">
                 <label class="btn btn-{{ $uploadColor }} me-3 mb-4" tabindex="0">
-                <span class="d-none d-sm-block">
+                <span class="d-block">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M6 18h12v2H6zM11 7.41V16h2V7.41l4.29 4.3 1.42-1.42L12 3.59l-6.71 6.7 1.42 1.42z"/>
                     </svg>
-                    {{ $uploadLabel }}
+                    <span class="d-none d-md-inline">{{ $uploadLabel }}</span>
                 </span>
                     {{ html()->hidden($name, $value ?: '') }}
                     <input
@@ -54,12 +54,12 @@
                     input.value = '';
                     wrapper.querySelector('input[type=hidden]').value = '';
                 ">
-                <span class="d-none d-sm-block">
+                <span class="d-block">
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M17 6V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H2v2h2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8h2V6zM9 4h6v2H9zM6 20V8h12v12z"/>
                         <path d="M9 10h2v8H9zM13 10h2v8h-2z"/>
                     </svg>
-                    {{ $resetLabel }}
+                    <span class="d-none d-md-inline">{{ $resetLabel }}</span>
                 </span>
                 </button>
 
