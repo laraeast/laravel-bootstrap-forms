@@ -1,5 +1,7 @@
 # ChangeLog
 
+### v7.3.2
+- Fix password error message issue
 ### v7.3.1
 - Fix base64 image component responsive
 ### v7.3.0
