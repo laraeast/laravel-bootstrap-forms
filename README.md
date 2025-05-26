@@ -245,13 +245,13 @@ php artisan vendor:publish --tag=locales:flags
 > `->inlineValidation($bool = true)` : To display validation errors in the specified field.
 
 ```blade
-{{ BsForm::text('username')->style('vertical')->inlineValidation(false) }}
+{{ BsForm::text('username')->style('horizontal')->inlineValidation(false) }}
 ```
 
-> `->style($style = 'default')` : To Set style to the specified field. supported `['default', 'vertical']`.
+> `->style($style = 'default')` : To Set style to the specified field. supported `['default', 'horizontal']`.
 
 ```blade
-{{ BsForm::text('username')->style('vertical') }}
+{{ BsForm::text('username')->style('horizontal') }}
 {{ BsForm::text('email')->style('default') }}
 ```
 
@@ -314,7 +314,7 @@ BsForm::errorBag('create');
 @php(BsForm::resource('users'))
 
 {{ BsForm::post(route('register')) }}
-	{{ BsForm::text()->name('name') }}
+	{{ BsForm::text('name') }}
 	{{ BsForm::email('email') }}
 	{{ BsForm::text('phone') }}
 	{{ BsForm::submit()->danger() }}
@@ -326,17 +326,17 @@ BsForm::errorBag('create');
 
 ```blade
 {{ BsForm::post(route('categories.store')) }}
-	@bsMultilangualFormTabs
+	@multilingualFormTabs
         {{ BsForm::text('name') }}
-	@endBsMultilangualFormTabs
+	@endMultilingualFormTabs
 
 	{{ BsForm::submit()->danger() }}
 {{ BsForm::close() }}
 ```
 
-> Note : the input name inside `@bsMultilangualFormTabs` and `@endBsMultilangualFormTabs` suffix with `:{lang}`.
+> Note : the input name inside `@multilingualFormTabs` and `@endMultilingualFormTabs` suffix with `:{lang}`.
 >
-> Ex. if your supported language is `ar` & `en` the input will named with `name:ar` & `name:en`.
+> Ex. if your supported language is `ar` & `en` the input will be named with `name:ar` & `name:en`.
 >
 > You should use [Astrotomic/laravel-translatable](https://github.com/Astrotomic/laravel-translatable) and configure it's rule_factory with key format `\Astrotomic\Translatable\Validation\RuleFactory::FORMAT_KEY` to fill the multilingual data like the following example.
 
@@ -387,7 +387,7 @@ return [
 ```
 
 <a name="bootstrap3"></a>
-# # Using Bootstrap 3
+# # Using Bootstrap 3 or 4
 
 > If you want to use bootstrap 3 you should publish the config file using the following commad and set the bootstrap version globally.
 
@@ -401,10 +401,11 @@ return [
     /**
      * The path of form components views.
      *
+     * - 'BsForm::bootstrap5'  - Bootstrap 5
      * - 'BsForm::bootstrap4'  - Bootstrap 4
      * - 'BsForm::bootstrap3'  - Bootstrap 3
      */
-    'views' => 'BsForm::bootstrap3',
+    'views' => 'BsForm::bootstrap4',
     ...
 ];
 ```
@@ -430,14 +431,14 @@ php artisan vendor:publish --provider="Laraeast\LaravelBootstrapForms\Providers\
 - views
 	- vendor
 		- BsForm
-			- bootstrap4
+			- bootstrap5
 				- text
 					- default.blade.php
-					- vertical.blade.php
+					- horizontal.blade.php
 					- custom.blade.php
 				- email
 					- default.blade.php
-					- vertical.blade.php
+					- horizontal.blade.php
 					- custom.blade.php
 ```
 
@@ -447,7 +448,7 @@ php artisan vendor:publish --provider="Laraeast\LaravelBootstrapForms\Providers\
 {{ BsForm::text('name')->style('custom') }}
 ```
 
-> you can also set the style globally with `BsForm::style()` method before the form open as well :
+> you can also set the style globally with `BsForm::style()` method before the form open as well:
 
 ```blade
 @php(BsForm::style('custom'))
@@ -484,12 +485,12 @@ php artisan vendor:publish --provider="Laraeast\LaravelBootstrapForms\Providers\
 <a name="custom-component"></a>
 # # Add Custom Component
 
-> You may add new component class extends `BaseComponent` and regoster it in your `boot()` method in `AppServiceProvider` class as well:
+> You may add new component class extends `BaseComponent` and register it in your `boot()` method in `AppServiceProvider` class as well:
 
 ```php
 <?php
 
-namespace App\Components;
+namespace App\Form\Components;
 
 use Laraeast\LaravelBootstrapForms\Components\BaseComponent;
 
@@ -497,29 +498,22 @@ class ImageComponent extends BaseComponent
 {
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'components.image';
+    protected string $viewPath = 'components.image';
 
     /**
      * The image file path.
-     *
-     * @var string
      */
-    protected $file;
+    protected string $file;
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments): self
     {
-        $this->name = $name = $arguments[0] ?? null;
+        $this->name = $arguments[0] ?? null;
 
-        $this->value = ($arguments[1] ?? null) ?: 'http://via.placeholder.com/100x100';
+        $this->file = ($arguments[1] ?? null) ?: 'https://placehold.co/200x200/000000/FFF';
 
         //$this->setDefaultLabel();
 
@@ -532,11 +526,8 @@ class ImageComponent extends BaseComponent
 
     /**
      * Set the file path.
-     *
-     * @param $file
-     * @return $this
      */
-    public function file($file)
+    public function file($file): self
     {
         $this->file = $file;
 
@@ -544,11 +535,9 @@ class ImageComponent extends BaseComponent
     }
 
     /**
-     * The variables with registerd in view component.
-     *
-     * @return array
+     * The registered variables in view component.
      */
-    protected function viewComposer()
+    protected function viewComposer(): array
     {
         return [
             'file' => $this->file,
@@ -564,7 +553,7 @@ class ImageComponent extends BaseComponent
 
 namespace App\Providers;
 
-use App\Components\ImageComponent;
+use App\Form\Components\ImageComponent;
 use Illuminate\Support\ServiceProvider;
 use Laraeast\LaravelBootstrapForms\Facades\BsForm;
 
@@ -577,40 +566,42 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
         BsForm::registerComponent('image', ImageComponent::class);
-        ...
+        //...
     }
-    ...
+    //...
 ```  
 
-> Then publish the BsForm views and create the new component file in `views/vendor/BsForm/bootstrap4/components/image/default.blade.php` path.
+> Then publish the BsForm views and create the new component file in `views/vendor/BsForm/bootstrap5/components/image/default.blade.php` path.
    
-> Eexample content of `views/vendor/BsForm/bootstrap4/components/image/default.blade.php` file :
+> Example content of `views/vendor/BsForm/bootstrap5/components/image/default.blade.php` file :
 
 ```blade
-<div class="form-group{{ $errors->has($name) ? ' has-error' : '' }}">
+<?php $invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' is-invalid' : ''; ?>
+<div class="mb-3">
     @if($label)
-        {{ Form::label($name, $label, ['class' => 'content-label']) }}
+        {{ html()->label($label, $name)->attributes(['class' => 'form-label']) }}
     @endif
 
-    {{ Form::file($name, array_merge(['class' => 'form-control'], $attributes)) }}
+    {{ html()->file($name)->attributes(array_merge(['class' => 'form-control p-1'.$invalidClass], $attributes)) }}
 
     @if($inlineValidation)
-        @if($errors->has($name))
-            <strong class="help-block">{{ $errors->first($name) }}</strong>
+        @if($errors->{$errorBag}->has($nameWithoutBrackets))
+            <div class="invalid-feedback">
+                {{ $errors->{$errorBag}->first($nameWithoutBrackets) }}
+            </div>
         @else
-            <strong class="help-block">{{ $note }}</strong>
+            <small class="form-text text-muted">{!! $note !!}</small>
         @endif
     @else
-        <strong class="help-block">{{ $note }}</strong>
+        <small class="form-text text-muted">{!! $note !!}</small>
     @endif
-        
+
     @if($file)
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-xs-6 col-md-3">
-                <a href="#" class="thumbnail">
-                    <img src="{{ $file }}">
+                <a href="#">
+                    <img src="{{ $file }}" class="mw-100" alt="">
                 </a>
             </div>
         </div>
