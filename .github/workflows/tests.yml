@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [8.2, 8.3, 8.4]
+        php: [8.1, 8.2, 8.3, 8.4]
 
-    name: PHP ${{ matrix.php }} Test
+    name: PHP v${{ matrix.php }} Test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
         run: composer validate --strict
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install
 
       - name: Run tests
         run: vendor/bin/phpunit
