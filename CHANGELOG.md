@@ -1,5 +1,8 @@
 # ChangeLog
 
+### v8.0.0
+- Upgrade laraeast/laravel-locales version to v4.1.
+- Fix color component (remove extra localizable trait).
 ### v7.3.3
 - Styling password icon
 ### v7.3.2
