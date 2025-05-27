@@ -3,6 +3,7 @@
 namespace Laraeast\LaravelBootstrapForms;
 
 use Laraeast\LaravelBootstrapForms\Components\Base64ImageComponent;
+use Laraeast\LaravelLocales\Enums\Language;
 use Laraeast\LaravelLocales\Facades\Locales;
 use Laraeast\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Laraeast\LaravelBootstrapForms\Components\FileComponent;
@@ -28,9 +29,12 @@ class BsForm
 
     private string $resource = '';
 
+    /**
+     * @var array|\Laraeast\LaravelLocales\Enums\Language[]
+     */
     protected array $locales = [];
 
-    protected \stdClass|array|null $locale = null;
+    protected Language|null $locale = null;
 
     /**
      * The component style.
@@ -113,8 +117,10 @@ class BsForm
     /**
      * Set the default locale code.
      */
-    public function locale(\stdClass|array|null $locale = null): self
+    public function locale(string|Language|null $locale = null): self
     {
+        $locale = $locale ? Locales::from($locale) : null;
+
         $this->locale = $locale;
 
         return $this;
@@ -180,7 +186,7 @@ class BsForm
     }
 
     /**
-     * @return array
+     * @return \Laraeast\LaravelLocales\Enums\Language[]
      */
     public function getLocales(): array
     {

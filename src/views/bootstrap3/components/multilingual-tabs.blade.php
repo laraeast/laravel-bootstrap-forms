@@ -3,9 +3,9 @@
     <ul class="nav nav-tabs" role="tablist">
         @multilingualForm
         <li role="presentation" class="{{ $loop->index == 0 ? 'active' : '' }}">
-            <a href="#{{ $uniqid.'-'.$locale->code }}" aria-controls="{{ $uniqid.'-'.$locale->code }}" role="tab" data-toggle="tab">
-                <img src="{{ $locale->flag }}" alt="">
-                {{ $locale->name }}
+            <a style="display:flex;align-items: center;" href="#{{ $uniqid.'-'.$locale->getCode() }}" aria-controls="{{ $uniqid.'-'.$locale->getCode() }}" role="tab" data-toggle="tab">
+                {{ $locale->getSvgFlag(24, 24) }}
+                <span style="margin-left: 1rem;">{{ $locale->getName() }}</span>
             </a>
         </li>
         @endMultilingualForm
@@ -14,8 +14,8 @@
     <!-- Tab panes -->
     <div class="tab-content" style="margin-top: 10px;">
         @multilingualForm
-        <div role="tabpanel" class="tab-pane fade{{ $loop->index == 0 ? ' active in' : '' }}" id="{{ $uniqid.'-'.$locale->code }}">
-            @stack($uniqid.$locale->code)
+        <div role="tabpanel" class="tab-pane fade{{ $loop->index == 0 ? ' active in' : '' }}" id="{{ $uniqid.'-'.$locale->getCode() }}">
+            @stack($uniqid.$locale->getCode())
         </div>
         @endMultilingualForm
     </div>

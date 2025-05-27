@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Laraeast\LaravelBootstrapForms\Components\SubmitComponent submit(?string $label = null, ?string $name = null, mixed $value = null)
  * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self open(string $url, array $attributes = [])
  * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self resource(string $resource)
- * @method static  array|null locale(?string $locale = null)
+ * @method static  array|null locale(?\Laraeast\LaravelLocales\Enums\Language|string $locale = null)
  * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self style(?string $style = null)
  * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self clearStyle()
  * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self inlineValidation(bool $bool = true)
