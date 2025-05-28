@@ -17,7 +17,7 @@ class SubmitComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      */
-    public function init(...$arguments):self
+    public function init(...$arguments): self
     {
         $this->value($arguments[2] ?? '');
         $this->name($arguments[1] ?? '');

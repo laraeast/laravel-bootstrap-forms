@@ -12,7 +12,9 @@ class PriceComponent extends TextualComponent
     protected string $viewPath = 'price';
 
     protected string $currency = '';
+
     protected string|float $step = 0.01;
+
     protected string $placeholder = '0.00';
 
     public function init(...$arguments): TextualComponent

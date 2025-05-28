@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class BsForm
+ *
  * @method static \Laraeast\LaravelBootstrapForms\Components\TextComponent text(?string $name = null, mixed $value = null)
  * @method static \Laraeast\LaravelBootstrapForms\Components\EmailComponent email(?string $name = null, mixed $value = null)
  * @method static \Laraeast\LaravelBootstrapForms\Components\PasswordComponent password(?string $name = null, mixed $value = null)
@@ -21,16 +22,14 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Laraeast\LaravelBootstrapForms\Components\ColorComponent color(?string $name = null, mixed $value = null)
  * @method static \Laraeast\LaravelBootstrapForms\Components\Base64ImageComponent base64Image(?string $name = null, mixed $value = null)
  * @method static \Laraeast\LaravelBootstrapForms\Components\SubmitComponent submit(?string $label = null, ?string $name = null, mixed $value = null)
- * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self open(string $url, array $attributes = [])
- * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self resource(string $resource)
- * @method static  array|null locale(?\Laraeast\LaravelLocales\Enums\Language|string $locale = null)
- * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self style(?string $style = null)
- * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self clearStyle()
- * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self inlineValidation(bool $bool = true)
- * @method static  \Laraeast\LaravelBootstrapForms\BsForm|self errorBag(string $bag = 'default')
- * @method static  \Illuminate\Support\HtmlString close()
- *
- * @package Laraeast\LaravelBootstrapForms\Facades
+ * @method static \Laraeast\LaravelBootstrapForms\BsForm|self open(string $url, array $attributes = [])
+ * @method static \Laraeast\LaravelBootstrapForms\BsForm|self resource(string $resource)
+ * @method static array|null locale(?\Laraeast\LaravelLocales\Enums\Language|string $locale = null)
+ * @method static \Laraeast\LaravelBootstrapForms\BsForm|self style(?string $style = null)
+ * @method static \Laraeast\LaravelBootstrapForms\BsForm|self clearStyle()
+ * @method static \Laraeast\LaravelBootstrapForms\BsForm|self inlineValidation(bool $bool = true)
+ * @method static \Laraeast\LaravelBootstrapForms\BsForm|self errorBag(string $bag = 'default')
+ * @method static \Illuminate\Support\HtmlString close()
  */
 class BsForm extends Facade
 {

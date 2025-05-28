@@ -2,10 +2,9 @@
 
 namespace Laraeast\LaravelBootstrapForms\Helpers;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
-use Laraeast\LaravelBootstrapForms\Facades\BsForm;
+use Illuminate\Support\Str;
 
 class FormDirectives
 {
@@ -31,7 +30,7 @@ class FormDirectives
         });
 
         Blade::directive('multilingualForm', function () {
-            $initLoop = "\$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
+            $initLoop = '$__currentLoopData = BsForm::getLocales(); $__env->addLoop($__currentLoopData);';
 
             $iterateLoop = '$__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); BsForm::locale($locale);';
 

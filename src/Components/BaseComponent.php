@@ -2,10 +2,10 @@
 
 namespace Laraeast\LaravelBootstrapForms\Components;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Str;
 
 abstract class BaseComponent implements Htmlable
 {
@@ -17,7 +17,7 @@ abstract class BaseComponent implements Htmlable
     /**
      * The input's name attribute without brackets.
      */
-    protected string $nameWithoutBrackets ='';
+    protected string $nameWithoutBrackets = '';
 
     /**
      * Determine if the input's name attribute has brackets.
@@ -146,7 +146,7 @@ abstract class BaseComponent implements Htmlable
 
     protected function nameWithoutBracketsAndLocaleForm(): string
     {
-        return preg_replace('/([a-zA-Z0-9]+)(:.*)?(\[(?:.*)\])?/', "$1", $this->name);
+        return preg_replace('/([a-zA-Z0-9]+)(:.*)?(\[(?:.*)\])?/', '$1', $this->name);
     }
 
     public function value(mixed $value): self
@@ -231,8 +231,6 @@ abstract class BaseComponent implements Htmlable
 
     /**
      * Render the component.
-     *
-     * @return string
      */
     protected function render(): string
     {

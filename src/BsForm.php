@@ -3,25 +3,24 @@
 namespace Laraeast\LaravelBootstrapForms;
 
 use Laraeast\LaravelBootstrapForms\Components\Base64ImageComponent;
-use Laraeast\LaravelLocales\Enums\Language;
-use Laraeast\LaravelLocales\Facades\Locales;
-use Laraeast\LaravelBootstrapForms\Traits\HasOpenAndClose;
-use Laraeast\LaravelBootstrapForms\Components\FileComponent;
-use Laraeast\LaravelBootstrapForms\Components\TextComponent;
-use Laraeast\LaravelBootstrapForms\Components\TimeComponent;
-use Laraeast\LaravelBootstrapForms\Components\DateComponent;
+use Laraeast\LaravelBootstrapForms\Components\CheckboxComponent;
 use Laraeast\LaravelBootstrapForms\Components\ColorComponent;
+use Laraeast\LaravelBootstrapForms\Components\DateComponent;
 use Laraeast\LaravelBootstrapForms\Components\EmailComponent;
+use Laraeast\LaravelBootstrapForms\Components\FileComponent;
+use Laraeast\LaravelBootstrapForms\Components\NumberComponent;
+use Laraeast\LaravelBootstrapForms\Components\PasswordComponent;
 use Laraeast\LaravelBootstrapForms\Components\PriceComponent;
 use Laraeast\LaravelBootstrapForms\Components\RadioComponent;
-use Laraeast\LaravelBootstrapForms\Components\NumberComponent;
 use Laraeast\LaravelBootstrapForms\Components\SelectComponent;
 use Laraeast\LaravelBootstrapForms\Components\SubmitComponent;
-use Laraeast\LaravelBootstrapForms\Components\PasswordComponent;
-use Laraeast\LaravelBootstrapForms\Components\CheckboxComponent;
 use Laraeast\LaravelBootstrapForms\Components\TextareaComponent;
+use Laraeast\LaravelBootstrapForms\Components\TextComponent;
+use Laraeast\LaravelBootstrapForms\Components\TimeComponent;
 use Laraeast\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
-use Spatie\Html\Elements\Form;
+use Laraeast\LaravelBootstrapForms\Traits\HasOpenAndClose;
+use Laraeast\LaravelLocales\Enums\Language;
+use Laraeast\LaravelLocales\Facades\Locales;
 
 class BsForm
 {
@@ -34,7 +33,7 @@ class BsForm
      */
     protected array $locales = [];
 
-    protected Language|null $locale = null;
+    protected ?Language $locale = null;
 
     /**
      * The component style.
@@ -166,7 +165,6 @@ class BsForm
     /**
      * Set the input inline validation errors option.
      *
-     * @param  bool  $bool
      * @return $this
      */
     public function inlineValidation(bool $bool = true): self
@@ -182,7 +180,7 @@ class BsForm
             return $instance;
         }
 
-        return static::$instance = new static();
+        return static::$instance = new static;
     }
 
     /**

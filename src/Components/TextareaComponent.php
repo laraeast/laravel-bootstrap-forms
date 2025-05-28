@@ -2,7 +2,6 @@
 
 namespace Laraeast\LaravelBootstrapForms\Components;
 
-
 use Laraeast\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
 use Laraeast\LaravelBootstrapForms\Traits\LocalizableComponent as LocalizableComponentTrait;
 

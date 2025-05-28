@@ -12,16 +12,19 @@ class Base64ImageComponent extends BaseComponent
     protected string $viewPath = 'base64Image';
 
     protected string $default = 'https://placehold.co/200x200/CCCCCC/444?text=Upload';
+
     protected string $uploadLabel = 'Upload';
+
     protected string $resetLabel = 'Reset';
 
     protected string $uploadColor = 'primary';
+
     protected string $resetColor = 'danger';
 
     /**
      * Initialized the input arguments.
      *
-     * @param mixed ...$arguments
+     * @param  mixed  ...$arguments
      * @return $this
      */
     public function init(...$arguments): self

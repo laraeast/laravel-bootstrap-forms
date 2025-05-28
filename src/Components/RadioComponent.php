@@ -9,9 +9,6 @@ class RadioComponent extends BaseComponent
      */
     protected string $viewPath = 'radio';
 
-    /**
-     * @var bool
-     */
     protected bool $checked = false;
 
     /**
@@ -36,7 +33,7 @@ class RadioComponent extends BaseComponent
 
     public function checked(?bool $checked = true): self
     {
-        $this->checked = ! ! $checked;
+        $this->checked = (bool) $checked;
 
         return $this;
     }

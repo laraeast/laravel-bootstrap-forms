@@ -12,7 +12,7 @@ class FileComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param mixed ...$arguments
+     * @param  mixed  ...$arguments
      * @return $this
      */
     public function init(...$arguments): self

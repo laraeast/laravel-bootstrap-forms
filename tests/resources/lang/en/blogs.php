@@ -3,11 +3,11 @@
 return [
     'attributes' => [
         'body' => 'Body',
-        'tags' => 'Tags'
+        'tags' => 'Tags',
     ],
     'placeholders' => [
         'body' => 'Write something',
-        'tags' => 'Select tags'
+        'tags' => 'Select tags',
     ],
     'notes' => [
         'tags' => 'You can select one or many tags.',

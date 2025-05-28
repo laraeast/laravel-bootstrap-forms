@@ -7,7 +7,7 @@ use Laraeast\LaravelLocales\Facades\Locales;
 
 trait LocalizableComponent
 {
-    protected Language|null $locale = null;
+    protected ?Language $locale = null;
 
     /**
      * Determine if the label will be translated or not.

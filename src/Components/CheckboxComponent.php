@@ -49,7 +49,7 @@ class CheckboxComponent extends BaseComponent
 
     public function checked(?bool $checked = true): self
     {
-        $this->checked = ! ! $checked;
+        $this->checked = (bool) $checked;
 
         return $this;
     }

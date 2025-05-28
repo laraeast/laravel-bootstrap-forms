@@ -44,7 +44,7 @@ class BootstrapFormsServiceProvider extends ServiceProvider
             $this->srcPath('config/laravel-bootstrap-forms.php'), 'laravel-bootstrap-forms'
         );
     }
-    
+
     private function srcPath(string $path): string
     {
         return __DIR__.'/../'.$path;

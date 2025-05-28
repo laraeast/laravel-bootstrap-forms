@@ -37,7 +37,6 @@ class TextareaComponentTest extends TestCase
         );
     }
 
-
     public function test_it_can_generate_a_textarea_field_with_rows_attribute()
     {
         $textInput = BsForm::resource('')->textarea('body')->rows(2)->toHtml();
