@@ -8,7 +8,9 @@
 
 - [Installation](#installation)
 - [Opening A Form](#opening-a-form)
-- [Text, Text Area, Date, Number, Files, Base64Image & Password Fields](#fields)
+- [Text, Text Area, Date, Number, Files, Base64Image, Color & Password Fields](#fields)
+- [Price Field](#price)
+- [Phone Field](#phone)
 - [Checkboxes and Radio Buttons](#checkboxes)
 - [Drop-Down Lists](#dropdown)
 - [Generating A Submit Button](#submit)
@@ -197,6 +199,66 @@ return [
     ],
     // ...
 ];
+```
+
+<a name="price"></a>
+# # Generating A Price Field
+```blade
+{{ BsForm::price('amount) }}
+{{ BsForm::price('amount)->currency('$') }}
+{{ BsForm::price('amount)->step(.001) }}
+```
+
+<a name="phone"></a>
+# # Generating A Phone Field
+> Generate a phone field with country select,
+```blade
+{{ BsForm::phone('phone) }}
+{{ BsForm::phone('phone)->countries(['SA', 'EG']) }}
+```
+> This will generate 2 inputs `phone` and `phone_country`. You can store both columns to database or use `E164` format, We suggest to use [Propaganistas/Laravel-Phone](https://github.com/Propaganistas/Laravel-Phone) package and save the phone using E164 format.
+> 
+> You can configure countries from `laravel-bootstrap-forms`config in `phone` array:
+```php
+    'phone' => [
+        /**
+         * The list of supported countries that will be displayed in phone input.
+         *
+         * If you want to use all countries, You can use Country::all(),
+         */
+        'countries' => [
+            Country::SA,
+            Country::KW,
+            Country::IQ,
+            Country::AE,
+            Country::BH,
+            Country::EG,
+        ],
+
+        /**
+         * The format of countries list.
+         *
+         * Examples:
+         * "{FLAG} - {COUNTRY_CODE} ({DEAL_CODE})" => "🇸🇦 SA (+966)"
+         * "{FLAG} - {COUNTRY_NAME} - ({DEAL_CODE})" => "🇸🇦 Saudi Arabia - (+966)"
+         */
+        'countries_list_format' => '{FLAG} {COUNTRY_CODE} ({DEAL_CODE})',
+    ],
+```
+> Also if you have `phone_country` column in the database, You can casting it from model to `Laraeast\LaravelBootstrapForms\Enums\Country` enum
+```php
+/**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'phone_country' => Country::class,
+            // ...
+        ];
+    }
 ```
 
 <a name="submit"></a>

@@ -10,6 +10,7 @@ use Laraeast\LaravelBootstrapForms\Components\EmailComponent;
 use Laraeast\LaravelBootstrapForms\Components\FileComponent;
 use Laraeast\LaravelBootstrapForms\Components\NumberComponent;
 use Laraeast\LaravelBootstrapForms\Components\PasswordComponent;
+use Laraeast\LaravelBootstrapForms\Components\PhoneComponent;
 use Laraeast\LaravelBootstrapForms\Components\PriceComponent;
 use Laraeast\LaravelBootstrapForms\Components\RadioComponent;
 use Laraeast\LaravelBootstrapForms\Components\SelectComponent;
@@ -61,6 +62,7 @@ class BsForm
         'price' => PriceComponent::class,
         'color' => ColorComponent::class,
         'base64Image' => Base64ImageComponent::class,
+        'phone' => PhoneComponent::class,
     ];
 
     protected static ?self $instance = null;
