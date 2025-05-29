@@ -2,6 +2,8 @@
 
 namespace Laraeast\LaravelBootstrapForms\Providers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Laraeast\LaravelBootstrapForms\BsForm;
 use Laraeast\LaravelBootstrapForms\Helpers\FormDirectives;
@@ -23,12 +25,47 @@ class BootstrapFormsServiceProvider extends ServiceProvider
             $this->srcPath('views') => resource_path('views/vendor/BsForm'),
         ], 'laravel-bootstrap-forms.views');
 
+        $this->publishes([
+            $this->srcPath('lang') => lang_path('vendor/BsForm'),
+        ], 'laravel-bootstrap-forms.lang');
+
+        $this->loadTranslationsFrom($this->srcPath('lang'), 'BsForm');
+
         FormDirectives::register();
 
         if ($this->app->runningInConsole() || $this->app->runningUnitTests()) {
             $this->loadTranslationsFrom(__DIR__.'/../../tests/resources/lang', 'test');
             $this->loadViewsFrom(__DIR__.'/../../tests/resources/views', 'test');
         }
+
+        Request::macro('phone', function ($phone) {
+            $phoneNumber = (string) $this->input($phone);
+            $country = $this->input("{$phone}_country");
+
+            if (phone($phoneNumber, $country)->isValid()) {
+                return phone($this->input($phone), $this->input("{$phone}_country"))->formatE164();
+            }
+
+            return null;
+        });
+
+        Request::macro('allWithPhoneNumber', function ($phone) {
+            $data = Arr::except($this->all(), "{$phone}_country");
+
+            $data[$phone] = $this->phone($phone);
+
+            return $data;
+        });
+
+        Request::macro('validatedWithPhoneNumber', function ($phone) {
+            $data = Arr::except($this->validated(), "{$phone}_country");
+
+            if (isset($data[$phone])) {
+                $data[$phone] = $this->phone($phone);
+            }
+
+            return $data;
+        });
     }
 
     /**

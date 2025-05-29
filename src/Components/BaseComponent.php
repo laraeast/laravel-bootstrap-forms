@@ -234,6 +234,8 @@ abstract class BaseComponent implements Htmlable
      */
     protected function render(): string
     {
+        $this->beforeRender();
+
         $properties = array_merge([
             'label' => $this->label,
             'name' => $this->name,
@@ -248,6 +250,11 @@ abstract class BaseComponent implements Htmlable
         return view($this->getViewPath())
             ->with($this->transformProperties($properties))
             ->render();
+    }
+
+    protected function beforeRender(): void
+    {
+        //
     }
 
     /**

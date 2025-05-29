@@ -2,6 +2,8 @@
 
 namespace Laraeast\LaravelBootstrapForms\Enums;
 
+use Illuminate\Support\Str;
+
 enum Country: string
 {
     case AW = 'AW';
@@ -901,7 +903,7 @@ enum Country: string
 
     public function getName(): string
     {
-        return __('countries.'.$this->value);
+        return __('BsForm::countries.'.$this->value);
     }
 
     public function getCode(): string
@@ -912,6 +914,11 @@ enum Country: string
     public function getMaxDigits(): int
     {
         return strlen(str_replace(' ', '', $this->getPhonePlaceholder()));
+    }
+
+    public function getPrefix(): ?string
+    {
+        return Str::of($this->getPhonePlaceholder())->match('/^\d+/')->value();
     }
 
     public static function all(): array

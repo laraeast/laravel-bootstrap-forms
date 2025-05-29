@@ -5,8 +5,8 @@
     @endif
     @php($input = html()->input('tel', $name)->attributes(array_merge([
             'class' => 'form-control'.$invalidClass,
-            'data-max' => isset($countries[0]) ? $countries[0]->getMaxDigits() : '',
-            'data-prefix' => isset($countries[0]) ? \Illuminate\Support\Str::of($countries[0]->getPhonePlaceholder())->match('/^\d+/') : '',
+            'data-max' => $selectedCountry->getMaxDigits(),
+            'data-prefix' => $selectedCountry->getPrefix(),
             'oninput' => "let val = this.value.replace(/\D/g, '');
                           const max = parseInt(this.dataset.max) || 10;
                           const prefix = this.dataset.prefix || '';
@@ -16,14 +16,14 @@
                           }
                           this.value = val.slice(0, max);",
             'onblur' => "let val = this.value.replace(/\D/g, '');
-                      const max = parseInt(this.dataset.max) || 10;
-                      const prefix = this.dataset.prefix || '';
-                      if (! prefix.startsWith(value.slice(0, prefix.length))) {
-                        this.value = '';
-                        return;
-                      }
-                      this.value = val.slice(0, max);",
-            'placeholder' => isset($countries[0]) ? $countries[0]->getPhonePlaceholder() : '',
+                          const max = parseInt(this.dataset.max) || 10;
+                          const prefix = this.dataset.prefix || '';
+                          if (! prefix.startsWith(value.slice(0, prefix.length))) {
+                            this.value = '';
+                            return;
+                          }
+                          this.value = val.slice(0, max);",
+            'placeholder' => $selectedCountry->getPhonePlaceholder(),
         ], $attributes)))
 
     @if($value)
@@ -50,8 +50,9 @@
                                 <option
                                         value="{{ $country->getCode() }}"
                                         data-max="{{ $country->getMaxDigits() }}"
-                                        data-prefix="{{ Str::of($country->getPhonePlaceholder())->match('/^\d+/') }}"
-                                        data-placeholder="{{ $country->getPhonePlaceholder() }}">
+                                        data-prefix="{{ $country->getPrefix() }}"
+                                        data-placeholder="{{ $country->getPhonePlaceholder() }}"
+                                        {{ $selectedCountry->getCode() === $country->getCode() ? 'selected' : '' }}>
                                     {{ str_replace([
                                         '{FLAG}',
                                         '{COUNTRY_CODE}',

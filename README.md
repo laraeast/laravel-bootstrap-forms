@@ -216,8 +216,48 @@ return [
 {{ BsForm::phone('phone) }}
 {{ BsForm::phone('phone)->countries(['SA', 'EG']) }}
 ```
-> This will generate 2 inputs `phone` and `phone_country`. You can store both columns to database or use `E164` format, We suggest to use [Propaganistas/Laravel-Phone](https://github.com/Propaganistas/Laravel-Phone) package and save the phone using E164 format.
-> 
+> This will generate 2 inputs `phone` and `phone_country`. You can store both columns to database or use `E164` format.
+
+In controller, You can use `$request->phone('phone')` to return the phone number in `E164` format so you can store it in the database.
+Also, You can use `$request->allWithPhoneNumber('phone')` or `$request->validatedWithPhoneNumber('phone')` that will transform the phone number in the array with `E164` format.
+
+**Validation:**
+```php
+use Laraeast\LaravelBootstrapForms\Rules\PhoneNumber;
+
+// ...
+
+public function rules(): array
+{
+    return [
+        'phone' => ['required', new PhoneNumber],
+    ];
+}
+```
+
+**Controller:**
+```php
+// ...
+
+public function update(Request $request, User $user)
+{
+    // Example: if you select EGYPT country and phone number is: 01098135318
+    $user->phone = $request->phone('phone');
+    
+    // $user->phone = '+201098135318';
+    
+    $user->save();
+
+    // Or
+    $user->update($request->allWithPhoneNumber('phone'));
+
+    // Or
+    $user->update($request->validatedWithPhoneNumber('phone'));
+    
+    // ...
+}
+```
+
 > You can configure countries from `laravel-bootstrap-forms`config in `phone` array:
 ```php
     'phone' => [
@@ -245,7 +285,7 @@ return [
         'countries_list_format' => '{FLAG} {COUNTRY_CODE} ({DEAL_CODE})',
     ],
 ```
-> Also if you have `phone_country` column in the database, You can casting it from model to `Laraeast\LaravelBootstrapForms\Enums\Country` enum
+> Also, if you have `phone_country` column in the database, You can cast it from model to `Laraeast\LaravelBootstrapForms\Enums\Country` enum
 ```php
 /**
      * Get the attributes that should be cast.
@@ -259,6 +299,15 @@ return [
             // ...
         ];
     }
+```
+> **NOTE:** It is recommended to set the phone value manually when use `BsForm::model()`, `BsForm::putModel()` and `BsForm::patchModel()` to avoid any issue in input value.
+
+```blade
+{{ BsForm::putModel($user, route('users.update', $user)) }}
+
+{{ BsForm::phone('phone', old('phone', $user->phone)) }}
+
+{{ BsForm::close() }}
 ```
 
 <a name="submit"></a>
