@@ -39,8 +39,8 @@ return [
          * The format of countries list.
          *
          * Examples:
-         * "{FLAG} - {COUNTRY_CODE} ({DEAL_CODE})" => "🇸🇦 SA (+966)"
-         * "{FLAG} - {COUNTRY_NAME} - ({DEAL_CODE})" => "🇸🇦 Saudi Arabia - (+966)"
+         * "{FLAG} {COUNTRY_CODE} ({DEAL_CODE})" => "🇸🇦 SA (+966)"
+         * "{FLAG} {COUNTRY_NAME} ({DEAL_CODE})" => "🇸🇦 Saudi Arabia (+966)"
          */
         'countries_list_format' => '{FLAG} {COUNTRY_CODE} ({DEAL_CODE})',
     ],
