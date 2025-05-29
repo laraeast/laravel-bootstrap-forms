@@ -14,13 +14,18 @@
                         this.value = this.value.slice(0, -1);
                         return;
                       }
+                      if(val.length === max) {
+                        this.classList.remove('is-invalid');
+                      }
                       this.value = val.slice(0, max);",
         'onblur' => "let val = this.value.replace(/\D/g, '');
                       const max = parseInt(this.dataset.max) || 10;
                       const prefix = this.dataset.prefix || '';
-                      if (! prefix.startsWith(value.slice(0, prefix.length))) {
-                        this.value = '';
+                      if (! prefix.startsWith(value.slice(0, prefix.length)) || val.length < max) {
+                        this.classList.add('is-invalid');
                         return;
+                      } else {
+                        this.classList.remove('is-invalid');
                       }
                       this.value = val.slice(0, max);",
         'placeholder' => $selectedCountry->getPhonePlaceholder(),
