@@ -29,11 +29,6 @@
 ```bash
 composer require laraeast/laravel-bootstrap-forms
 ```
-> You should publish the flags icons in public path to display in multilingual form tabs.
-
-```bash
-php artisan vendor:publish --tag=locales:flags
-```
 <a name="opening-a-form"></a>
 # # Opening A Form
 ```blade
