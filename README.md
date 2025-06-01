@@ -199,17 +199,17 @@ return [
 <a name="price"></a>
 # # Generating A Price Field
 ```blade
-{{ BsForm::price('amount) }}
-{{ BsForm::price('amount)->currency('$') }}
-{{ BsForm::price('amount)->step(.001) }}
+{{ BsForm::price('amount') }}
+{{ BsForm::price('amount')->currency('$') }}
+{{ BsForm::price('amount')->step(.001) }}
 ```
 
 <a name="phone"></a>
 # # Generating A Phone Field
 > Generate a phone field with country select,
 ```blade
-{{ BsForm::phone('phone) }}
-{{ BsForm::phone('phone)->countries(['SA', 'EG']) }}
+{{ BsForm::phone('phone') }}
+{{ BsForm::phone('phone')->countries(['SA', 'EG']) }}
 ```
 > This will generate 2 inputs `phone` and `phone_country`. You can store both columns to database or use `E164` format.
 
