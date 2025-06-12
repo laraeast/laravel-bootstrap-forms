@@ -17,18 +17,21 @@ class PhoneNumber implements ValidationRule
         $countryInput = request("{$attribute}_country");
 
         if ($countryInput) {
-            if (!$this->isValidCountry($attribute, $countryInput, $supportedCountries)) {
+            if (! $this->isValidCountry($attribute, $countryInput, $supportedCountries)) {
                 $fail(__('BsForm::validation.country_not_configured'));
+
                 return;
             }
-            if (!$this->isValidPhone($attribute, $value, $countryInput)) {
+            if (! $this->isValidPhone($attribute, $value, $countryInput)) {
                 $fail(__('BsForm::validation.invalid'));
+
                 return;
             }
+
             return;
         }
 
-        if (!$this->isValidPhone($attribute, $value, $supportedCountries, true)) {
+        if (! $this->isValidPhone($attribute, $value, $supportedCountries, true)) {
             $fail(__('BsForm::validation.invalid'));
         }
     }
@@ -36,6 +39,7 @@ class PhoneNumber implements ValidationRule
     private function getSupportedCountryCodes(): array
     {
         $countries = config('laravel-bootstrap-forms.phone.countries', []);
+
         return array_map(fn (Country $country) => $country->getCode(), $countries);
     }
 
@@ -46,7 +50,8 @@ class PhoneNumber implements ValidationRule
         ], [
             "{$attribute}_country" => [Rule::enum(Country::class), Rule::in($supportedCountries)],
         ]);
-        return !$validator->fails();
+
+        return ! $validator->fails();
     }
 
     private function isValidPhone(string $attribute, mixed $value, $country, bool $international = false): bool
@@ -61,6 +66,7 @@ class PhoneNumber implements ValidationRule
         ], [
             $attribute => [$rule],
         ]);
-        return !$validator->fails();
+
+        return ! $validator->fails();
     }
 }
