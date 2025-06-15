@@ -4,9 +4,11 @@ namespace Laraeast\LaravelBootstrapForms\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Laraeast\LaravelBootstrapForms\BsForm;
 use Laraeast\LaravelBootstrapForms\Helpers\FormDirectives;
+use Laraeast\LaravelBootstrapForms\Rules\PhoneNumber;
 
 class BootstrapFormsServiceProvider extends ServiceProvider
 {
@@ -42,11 +44,15 @@ class BootstrapFormsServiceProvider extends ServiceProvider
             $phoneNumber = (string) $this->input($phone);
             $country = $this->input("{$phone}_country");
 
-            if (phone($phoneNumber, $country)->isValid()) {
-                return phone($this->input($phone), $this->input("{$phone}_country"))->formatE164();
+            if (Validator::make(['phone' => $phoneNumber], [new PhoneNumber])->fails()) {
+                return null;
             }
 
-            return null;
+            if (! phone($phoneNumber, $country)->isValid()) {
+                return null;
+            }
+
+            return phone($phoneNumber, $country)->formatE164();
         });
 
         Request::macro('allWithPhoneNumber', function ($phone) {
