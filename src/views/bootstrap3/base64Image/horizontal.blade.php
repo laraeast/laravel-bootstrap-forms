@@ -35,16 +35,19 @@
                           wrapper.querySelector('input[type=hidden]').value = e.target.result;
                         };
                         reader.readAsDataURL(this.files[0]);
+                        wrapper.querySelector('.btn-reset').disabled = false;
                       } else {
                         img.src = '{{ $default }}';
                         wrapper.querySelector('input[type=hidden]').value = ''
+                        wrapper.querySelector('.btn-reset').disabled = true;
                       }
                     ">
                 </label>
 
                 <button
                         type="button"
-                        class="btn btn-{{ $resetColor }}"
+                        class="btn btn-{{ $resetColor }} btn-reset"
+                        disabled
                         style="margin-bottom: 1.5rem"
                         onclick="
                     const wrapper = this.closest('.image-preview');
@@ -53,6 +56,7 @@
                     img.src = '{{ $default }}';
                     input.value = '';
                     wrapper.querySelector('input[type=hidden]').value = '';
+                    this.disabled = true;
                 ">
                 <span style="display: flex;align-items: center;">
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">

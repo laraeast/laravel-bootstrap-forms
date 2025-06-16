@@ -33,22 +33,26 @@
                           wrapper.querySelector('input[type=hidden]').value = e.target.result;
                         };
                         reader.readAsDataURL(this.files[0]);
+                        wrapper.querySelector('.btn-reset').disabled = false;
                       } else {
                         img.src = '{{ $default }}';
                         wrapper.querySelector('input[type=hidden]').value = ''
+                        wrapper.querySelector('.btn-reset').disabled = true;
                       }
                     ">
             </label>
 
             <button
                     type="button"
-                    class="btn btn-{{ $resetColor }} mb-4"
+                    class="btn btn-{{ $resetColor }} btn-reset mb-4"
+                    disabled
                     onclick="
                     const wrapper = this.closest('.image-preview');
                     const img = wrapper.querySelector('img');
                     const input = wrapper.querySelector('input[type=file]');
                     img.src = '{{ $default }}';
                     input.value = '';
+                    this.disabled = true;
                     wrapper.querySelector('input[type=hidden]').value = '';
                 ">
                 <span class="d-block">
