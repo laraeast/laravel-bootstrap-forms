@@ -2,6 +2,7 @@
 
 namespace Laraeast\LaravelBootstrapForms;
 
+use Laraeast\LaravelBootstrapForms\Components\AttachmentComponent;
 use Laraeast\LaravelBootstrapForms\Components\Base64ImageComponent;
 use Laraeast\LaravelBootstrapForms\Components\CheckboxComponent;
 use Laraeast\LaravelBootstrapForms\Components\ColorComponent;
@@ -63,6 +64,7 @@ class BsForm
         'color' => ColorComponent::class,
         'base64Image' => Base64ImageComponent::class,
         'phone' => PhoneComponent::class,
+        'attachment' => AttachmentComponent::class,
     ];
 
     protected static ?self $instance = null;

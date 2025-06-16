@@ -4,10 +4,12 @@ namespace Laraeast\LaravelBootstrapForms\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Laraeast\LaravelBootstrapForms\BsForm;
 use Laraeast\LaravelBootstrapForms\Helpers\FormDirectives;
+use Laraeast\LaravelBootstrapForms\Http\Controllers\BsFormController;
 use Laraeast\LaravelBootstrapForms\Rules\PhoneNumber;
 
 class BootstrapFormsServiceProvider extends ServiceProvider
@@ -72,6 +74,8 @@ class BootstrapFormsServiceProvider extends ServiceProvider
 
             return $data;
         });
+
+        Route::get(config('laravel-bootstrap-forms.attachment.icons.route'), [BsFormController::class, 'icon'])->name('bs-form.icon');
     }
 
     /**

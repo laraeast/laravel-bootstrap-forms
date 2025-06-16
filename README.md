@@ -8,7 +8,7 @@
 
 - [Installation](#installation)
 - [Opening A Form](#opening-a-form)
-- [Text, Text Area, Date, Number, Files, Base64Image, Color & Password Fields](#fields)
+- [Text, Text Area, Date, Number, Files, Base64Image, attachment, Color & Password Fields](#fields)
 - [Price Field](#price)
 - [Phone Field](#phone)
 - [Checkboxes and Radio Buttons](#checkboxes)
@@ -187,6 +187,42 @@ return [
         'avatar' => [
             'upload' => 'Upload image',
             'reset' => 'Reset image',
+        ],
+    ],
+    'notes' => [
+        'avatar' => 'Allowed JPG, GIF or PNG. Max size of 800K',
+    ],
+    // ...
+];
+```
+
+<a name="price"></a>
+
+## Attachment (with icon)
+
+```blade
+{{ BsForm::attachment('cv') }}
+{{ BsForm::attachment('document')->label('User CV') }}
+{{ BsForm::attachment('document')
+    ->label('User CV')
+    ->uploadLabel('Upload PDF')
+    ->resetLabel('Reset')
+    ->uploadColor('primary')
+    ->resetColor('danger') }}
+{{ BsForm::attachment('avatar')
+    ->label('User CV')
+    ->valueMimeType('application/pdf')
+    ->downloadLink('/path/to/downloadable/file') }}
+```
+> Regarding upload label & reset label, you can add them into translation file for the resource in `actions.{resource_name}` array, for example if the resource name is `users` and the field name is `avatar`, You should add the following translation `lang/en/users.php`:
+```php
+<?php
+
+return [
+    'actions' => [
+        'document' => [
+            'upload' => 'Upload PDF',
+            'reset' => 'Reset',
         ],
     ],
     'notes' => [

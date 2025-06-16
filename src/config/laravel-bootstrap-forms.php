@@ -44,4 +44,20 @@ return [
          */
         'countries_list_format' => '{FLAG} {COUNTRY_CODE} ({DEAL_CODE})',
     ],
+
+    'attachment' => [
+        'icons' => [
+            /**
+             * The route of the icon preview.
+             */
+            'route' => '/laravel-bootstrap-forms/icon',
+
+            /**
+             * Customize mime types icons. Accepts URLs.
+             *
+             * Example: ['application/pdf' => '/images/icons/pdf.png']
+             */
+            'mime-types' => [],
+        ],
+    ],
 ];
