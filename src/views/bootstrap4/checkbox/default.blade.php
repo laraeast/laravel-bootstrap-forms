@@ -1,5 +1,5 @@
 <?php
-    $id = 'checkbox-'.Str::random('4').'-'.$name;
+$id = 'checkbox-'.Str::random('4').'-'.$name;
 ?>
 @php($input = html()->checkbox($name)->value($value)->attributes(['class' => 'form-check-input', 'id' => $id]))
 
@@ -10,12 +10,7 @@
 <div class="form-group">
     <div class="form-check">
         @if($hasDefaultValue)
-            @php($hiddenInput = html()->hidden($name))
-
-            @if($defaultValue)
-                @php($hiddenInput = $hiddenInput->value($defaultValue))
-            @endif
-            {{ $hiddenInput }}
+            {{ $hiddenInput = html()->hidden($name)->value($defaultValue) }}
         @endif
         {{ $input }}
         <label class="form-check-label" for="{{ $id }}">

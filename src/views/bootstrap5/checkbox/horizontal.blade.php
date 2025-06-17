@@ -18,17 +18,12 @@ $id = 'checkbox-'.Str::random('4').'-'.$name;
         @endif
         <div class="form-check">
             @if($hasDefaultValue)
-                @php($hiddenInput = html()->hidden($name))
-
-                    @if($defaultValue)
-                        @php($hiddenInput = $hiddenInput->value($defaultValue))
-                    @endif
-                    {{ $hiddenInput }}
-                    @endif
-                    {{ $input }}
-                    <label class="form-check-label" for="{{ $id }}">
-                        {!! $label !!}
-                    </label>
+                {{ $hiddenInput = html()->hidden($name)->value($defaultValue) }}
+            @endif
+            {{ $input }}
+            <label class="form-check-label" for="{{ $id }}">
+                {!! $label !!}
+            </label>
         </div>
         <small class="form-text text-muted ps-4">{!! $note !!}</small>
     </div>

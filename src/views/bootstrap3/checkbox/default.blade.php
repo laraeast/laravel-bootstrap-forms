@@ -11,14 +11,9 @@ $id = 'checkbox-'.Str::random('4').'-'.$name;
     <div class="checkbox">
         <label for="{{ $id }}">
             @if($hasDefaultValue)
-                @php($hiddenInput = html()->hidden($name))
-
-                @if($defaultValue)
-                    @php($hiddenInput = $hiddenInput->value($defaultValue))
-                @endif
-                {{ $hiddenInput }}
+                {{ $hiddenInput = html()->hidden($name)->value($defaultValue) }}
             @endif
-                {{ $input }} {!! $label !!}
+            {{ $input }} {!! $label !!}
         </label>
     </div>
     @if($inlineValidation)

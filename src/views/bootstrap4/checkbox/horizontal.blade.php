@@ -10,12 +10,7 @@ $id = 'checkbox-'.Str::random('4').'-'.$name;
     <div class="col-sm-10 offset-sm-2">
         <div class="form-check">
             @if($hasDefaultValue)
-                @php($hiddenInput = html()->hidden($name))
-
-                @if($defaultValue)
-                    @php($hiddenInput = $hiddenInput->value($defaultValue))
-                @endif
-                {{ $hiddenInput }}
+                {{ $hiddenInput = html()->hidden($name)->value($defaultValue) }}
             @endif
             {{ $input }}
             <label class="form-check-label" for="{{ $id }}">
