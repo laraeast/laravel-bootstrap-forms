@@ -12,6 +12,12 @@ return [
      */
     'views' => 'BsForm::bootstrap5',
 
+    /**
+     * The default form style to be used.
+     * Supported values: 'default', 'horizontal'
+     */
+    'default_style' => 'default',
+
     'checkboxes' => [
         /**
          * If the checkbox was unchecked will send default value with request.
