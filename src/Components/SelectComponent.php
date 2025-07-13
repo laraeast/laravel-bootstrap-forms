@@ -32,6 +32,8 @@ class SelectComponent extends BaseComponent
 
         $this->setDefaultPlaceholder($name);
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

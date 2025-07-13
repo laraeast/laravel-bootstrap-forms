@@ -28,6 +28,8 @@ class RadioComponent extends BaseComponent
 
         $this->setDefaultPlaceholder($name);
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

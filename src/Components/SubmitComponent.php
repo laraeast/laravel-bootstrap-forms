@@ -23,6 +23,8 @@ class SubmitComponent extends BaseComponent
         $this->name($arguments[1] ?? '');
         $this->label($arguments[0] ?? '');
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

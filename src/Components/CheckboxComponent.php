@@ -44,6 +44,8 @@ class CheckboxComponent extends BaseComponent
 
         $this->setDefaultPlaceholder();
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

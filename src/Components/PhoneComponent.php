@@ -30,6 +30,8 @@ class PhoneComponent extends TextualComponent
 
         $this->countries(config('laravel-bootstrap-forms.phone.countries'));
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

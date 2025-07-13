@@ -74,11 +74,7 @@ abstract class BaseComponent implements Htmlable
      */
     public function __construct(
         protected string $resource,
-    ) {
-        if ($defaultStyle = Config::get('laravel-bootstrap-forms.default_style')) {
-            $this->style = $defaultStyle;
-        }
-    }
+    ) {}
 
     /**
      * Initialized the input arguments.
@@ -211,6 +207,18 @@ abstract class BaseComponent implements Htmlable
         }
 
         return Config::get('laravel-bootstrap-forms.views').'.'.$this->viewPath.'.'.$this->style;
+    }
+
+    /**
+     * Set the default component style.
+     */
+    public function setDefaultStyle(): self
+    {
+        if ($defaultStyle = Config::get('laravel-bootstrap-forms.default_style')) {
+            $this->style = $defaultStyle;
+        }
+
+        return $this;
     }
 
     /**

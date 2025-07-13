@@ -44,6 +44,8 @@ class Base64ImageComponent extends BaseComponent
             $this->resetLabel = Lang::get($upload);
         }
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

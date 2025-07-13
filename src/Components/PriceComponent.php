@@ -29,6 +29,8 @@ class PriceComponent extends TextualComponent
 
         $this->setDefaultPlaceholder();
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

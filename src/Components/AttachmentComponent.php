@@ -52,6 +52,8 @@ class AttachmentComponent extends BaseComponent
             $this->customIcons = $customIcons;
         }
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 

@@ -23,6 +23,8 @@ abstract class TextualComponent extends BaseComponent
 
         $this->setDefaultPlaceholder();
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 }

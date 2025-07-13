@@ -23,6 +23,8 @@ class FileComponent extends BaseComponent
 
         $this->setDefaultNote($name);
 
+        $this->setDefaultStyle();
+
         return $this;
     }
 
