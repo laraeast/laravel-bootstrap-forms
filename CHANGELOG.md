@@ -1,5 +1,7 @@
 # ChangeLog
 
+### v10.2.0
+- Add ability to change style globally from config file.
 ### v8.0.0
 - Upgrade laraeast/laravel-locales version to v4.1.
 - Fix color component (remove extra localizable trait).
