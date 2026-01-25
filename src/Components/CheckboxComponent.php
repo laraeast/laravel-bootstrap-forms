@@ -13,7 +13,7 @@ class CheckboxComponent extends BaseComponent
 
     protected bool $checked = false;
 
-    protected bool $hasDefaultValue = true;
+    protected bool $hasDefaultValue = false;
 
     protected mixed $defaultValue = 0;
 

@@ -1,5 +1,7 @@
 @php($id = 'radio-'.Str::random('4').'-'.$name)
-@php($input = html()->radio($name)->value($value)->attributes(['id' => $id]))
+@php($invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' has-error' : '')
+
+@php($input = html()->radio($name)->value($value)->attributes(['id' => $id, 'class' => $invalidClass]))
 
 @if($checked)
     @php($input = $input->checked($checked))
