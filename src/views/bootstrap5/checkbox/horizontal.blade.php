@@ -2,7 +2,7 @@
 $id = 'checkbox-'.Str::random('4').'-'.$name;
 $invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' is-invalid' : '';
 ?>
-@php($input = html()->checkbox($name)->value($value)->attributes(['class' => 'form-check-input'.$invalidClass, 'id' => $id]))
+@php($input = html()->checkbox($name)->value($value)->attributes(['class' => 'form-check-input'.$invalidClass, 'id' => $id, ...$attributes]))
 
 @if($checked)
     @php($input = $input->checked($checked))

@@ -4,7 +4,7 @@
 <div class="form-group row">
     <div class="col-sm-10 offset-sm-2">
         <div class="form-check">
-            @php($input = html()->radio($name)->value($value)->attributes(['class' => 'form-check-input'.$invalidClass, 'id' => $id]))
+            @php($input = html()->radio($name)->value($value)->attributes(['class' => 'form-check-input'.$invalidClass, 'id' => $id, ...$attributes]))
 
             @if($checked)
                 @php($input = $input->checked($checked))

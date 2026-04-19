@@ -3,7 +3,7 @@
 
 <div class="mb-3">
     <div class="form-check">
-        @php($input = html()->radio($name)->value($value)->attributes(['class' => 'form-check-input'.$invalidClass, 'id' => $id]))
+        @php($input = html()->radio($name)->value($value)->attributes(['class' => 'form-check-input'.$invalidClass, 'id' => $id, ...$attributes]))
 
         @if($checked)
             @php($input = $input->checked($checked))
